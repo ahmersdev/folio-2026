@@ -1,11 +1,16 @@
 import { useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import type { Group } from "three";
-import { CLOUD_STYLES, POSITION_RANGES } from "./atmosphere-clouds.data";
+import {
+  CLOUD_STYLES,
+  DRIFT_BOUNDS,
+  DRIFT_SPEEDS,
+  POSITION_RANGES,
+} from "./atmosphere-clouds.data";
 import { randomInRange } from "./atmosphere-clouds.utils";
 
 export default function useAtmosphereClouds() {
-  const group = useRef<Group>(null);
+  const cloudRefs = useRef<(Group | null)[]>([]);
 
   // Randomized once per mount (empty deps) so the cloud layout differs each
   // page load without reshuffling on every re-render.
@@ -28,9 +33,25 @@ export default function useAtmosphereClouds() {
   );
   /* eslint-enable react-hooks/purity */
 
+  // Each cloud drifts sideways and wraps back to the opposite edge once it
+  // crosses DRIFT_BOUNDS, so it keeps cycling through view indefinitely
+  // instead of drifting off and only returning after a very slow full
+  // rotation of the whole scene.
   useFrame((_, delta) => {
-    if (group.current) group.current.rotation.y += delta * 0.015;
+    cloudRefs.current.forEach((instance, i) => {
+      if (!instance) return;
+      instance.position.x += DRIFT_SPEEDS[i] * delta;
+      if (instance.position.x > DRIFT_BOUNDS.max) {
+        instance.position.x = DRIFT_BOUNDS.min;
+      }
+    });
   });
 
-  return { group, clouds };
+  function setCloudRef(index: number) {
+    return (instance: Group | null) => {
+      cloudRefs.current[index] = instance;
+    };
+  }
+
+  return { clouds, setCloudRef };
 }

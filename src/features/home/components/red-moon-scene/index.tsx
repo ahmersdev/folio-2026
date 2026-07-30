@@ -17,18 +17,12 @@ export default function RedMoonScene() {
       onPointerLeave={handlePointerLeave}
     >
       <Canvas shadows camera={{ position: [0, 1, 5], fov: 60 }}>
-        <ambientLight intensity={0.35} color="#ff2b2b" />
+        <ambientLight intensity={0.3} color="#ff2b2b" />
+        <ambientLight intensity={1.5} color="#ffffff" />
+        {/* neutral fill, brightened while checking baked colors */}
         <directionalLight
-          intensity={2.0}
-          color="#ff0000"
-          position={[0, 5, 2]}
-          castShadow
-          shadow-mapSize={[1024, 1024]}
-        />
-        {/* dim neutral fill so unlit rock faces aren't pure black */}
-        <directionalLight
-          intensity={0.25}
-          color="#8a8a9a"
+          intensity={1.5}
+          color="#ffffff"
           position={[-4, 2, -3]}
         />
 

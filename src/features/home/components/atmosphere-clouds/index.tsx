@@ -7,15 +7,13 @@ import { Cloud, Clouds } from "@react-three/drei";
 import useAtmosphereClouds from "./use-atmosphere-clouds";
 
 export default function AtmosphereClouds() {
-  const { group, clouds } = useAtmosphereClouds();
+  const { clouds, setCloudRef } = useAtmosphereClouds();
 
   return (
-    <group ref={group}>
-      <Clouds limit={200}>
-        {clouds.map((cloud, i) => (
-          <Cloud key={i} {...cloud} />
-        ))}
-      </Clouds>
-    </group>
+    <Clouds limit={200}>
+      {clouds.map((cloud, i) => (
+        <Cloud key={i} ref={setCloudRef(i)} {...cloud} />
+      ))}
+    </Clouds>
   );
 }

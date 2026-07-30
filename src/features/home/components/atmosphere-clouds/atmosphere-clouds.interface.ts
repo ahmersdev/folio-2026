@@ -8,3 +8,5 @@ export type TCloudStyle = {
 };
 
 export type TRange = [number, number];
+
+export type TDriftBounds = { min: number; max: number };
