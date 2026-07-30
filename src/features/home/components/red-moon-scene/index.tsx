@@ -5,6 +5,8 @@ import { Canvas } from "@react-three/fiber";
 import EyeMesh from "../eye-mesh";
 import AtmosphereClouds from "../atmosphere-clouds";
 import BgBreak from "../bg-break";
+import Crow from "../crow";
+import { FLIGHT_CONFIGS } from "../crow/crow.data";
 import useRedMoonScene from "./use-red-moon-scene";
 
 export default function RedMoonScene() {
@@ -33,6 +35,9 @@ export default function RedMoonScene() {
         <Suspense fallback={null}>
           <AtmosphereClouds />
           <BgBreak />
+          {FLIGHT_CONFIGS.map((config, i) => (
+            <Crow key={i} config={config} />
+          ))}
         </Suspense>
       </Canvas>
     </div>
