@@ -5,6 +5,7 @@ import {
   Inter,
   Geist_Mono,
   Protest_Revolution,
+  Water_Brush,
 } from "next/font/google";
 import { SiteHeader } from "@/layout";
 import { ThemeProvider } from "@/providers";
@@ -32,6 +33,12 @@ const protestRevolution = Protest_Revolution({
   subsets: ["latin"],
 });
 
+const waterBrush = Water_Brush({
+  variable: "--font-brush",
+  weight: "400",
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
   title: "Ahmer · Software Engineer",
   description: "Portfolio of Ahmer, a software engineer.",
@@ -46,7 +53,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${inter.variable} ${bebasNeue.variable} ${geistMono.variable} ${protestRevolution.variable} h-full antialiased`}
+      className={`${inter.variable} ${bebasNeue.variable} ${geistMono.variable} ${protestRevolution.variable} ${waterBrush.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <ThemeProvider
