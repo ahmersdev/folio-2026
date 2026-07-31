@@ -2,8 +2,8 @@
 
 import dynamic from "next/dynamic";
 import {
-  HandwrittenText,
   HeroCopy,
+  HeroSocials,
   ForegroundCrows,
   BackgroundScene,
 } from "./components";
@@ -20,13 +20,9 @@ export default function Home() {
     <div className="relative h-screen w-full">
       <DynamicBackgroundScene />
 
-      <div className="pointer-events-none absolute inset-x-0 top-[30%] flex flex-col items-center gap-6 px-6 py-16">
-        <HandwrittenText
-          text="Software Engineer"
-          className="text-4xl sm:text-5xl"
-        />
-        <HeroCopy />
-      </div>
+      <HeroCopy />
+
+      <HeroSocials />
 
       <DynamicForegroundCrows />
     </div>
