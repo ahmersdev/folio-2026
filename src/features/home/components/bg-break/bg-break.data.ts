@@ -24,3 +24,13 @@ export const LIFT_HEIGHT_UNITS = 0.1;
 export const LIFT_UP_DURATION_S = 0.6;
 export const LIFT_HOLD_DURATION_S = 2;
 export const LIFT_DOWN_DURATION_S = 2;
+
+// LavaBase now has a real baseColor/normal/emissive texture set (tiled via
+// KHR_texture_transform), so "flowing" is done by scrolling the texture UVs
+// over time rather than moving geometry — a geometry ripple on a large,
+// near-flat ground plane reads as the surface advancing/receding at this
+// camera angle, not as flowing liquid. Speeds are UV-units/second; tune
+// visually against the running scene, same caveat as LIFT_HEIGHT_UNITS.
+export const LAVA_MATERIAL_NAME = "LavaBaseMaterial";
+export const LAVA_FLOW_SPEED_X = 0.015;
+export const LAVA_FLOW_SPEED_Y = 0;

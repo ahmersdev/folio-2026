@@ -3,6 +3,7 @@
 import { useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
+import type { MeshStandardMaterial, Texture } from "three";
 import {
   BG_BREAK_GLB_PATH,
   FRAGMENT_COUNT,
@@ -16,6 +17,9 @@ import {
   LIFT_UP_DURATION_S,
   LIFT_HOLD_DURATION_S,
   LIFT_DOWN_DURATION_S,
+  LAVA_MATERIAL_NAME,
+  LAVA_FLOW_SPEED_X,
+  LAVA_FLOW_SPEED_Y,
 } from "./bg-break.data";
 import {
   randomInRange,
@@ -30,7 +34,7 @@ import { TActiveLift, TRestPosition } from "./bg-break.interface";
 useGLTF.preload(BG_BREAK_GLB_PATH);
 
 export default function useBgBreak() {
-  const { scene, nodes } = useGLTF(BG_BREAK_GLB_PATH);
+  const { scene, nodes, materials } = useGLTF(BG_BREAK_GLB_PATH);
 
   // Snapshot each fragment's authored rest Y position once, so lifts animate
   // relative to it instead of overwriting position with an assumed zero pose.
@@ -43,6 +47,20 @@ export default function useBgBreak() {
     return rest;
   }, [nodes]);
 
+  // LavaBase's material carries real base color/normal/emissive maps, so
+  // "flowing" is done by scrolling their UVs — every mapped texture needs to
+  // move together, or the diffuse pattern drifts out of sync with the
+  // normal/emissive detail.
+  const lavaTextures = useMemo(() => {
+    const material = materials[LAVA_MATERIAL_NAME] as
+      | MeshStandardMaterial
+      | undefined;
+    if (!material) return [];
+    return [material.map, material.normalMap, material.emissiveMap].filter(
+      (texture): texture is Texture => Boolean(texture),
+    );
+  }, [materials]);
+
   const activeLifts = useRef<TActiveLift[]>([]);
   const activeIndices = useRef<Set<number>>(new Set());
   const nextSpawnAt = useRef<number | null>(null);
@@ -54,10 +72,15 @@ export default function useBgBreak() {
   // R3F mutates refs and three.js objects every frame by design; the React
   // Compiler's static immutability analysis doesn't model this pattern.
   /* eslint-disable react-hooks/immutability */
-  useFrame((state) => {
+  useFrame((state, delta) => {
     if (reducedMotion) return;
 
     const elapsed = state.clock.elapsedTime;
+
+    for (const texture of lavaTextures) {
+      texture.offset.x += delta * LAVA_FLOW_SPEED_X;
+      texture.offset.y += delta * LAVA_FLOW_SPEED_Y;
+    }
 
     if (nextSpawnAt.current === null) {
       nextSpawnAt.current =
