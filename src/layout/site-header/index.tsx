@@ -1,5 +1,4 @@
 import Link from "next/link";
-import ThemeToggle from "@/components/theme-toggle";
 
 export default function SiteHeader() {
   return (
@@ -8,7 +7,6 @@ export default function SiteHeader() {
         <Link href="/" className="font-display text-2xl tracking-normal">
           Ahmer<span className="text-primary">.</span>
         </Link>
-        <ThemeToggle />
       </div>
     </header>
   );

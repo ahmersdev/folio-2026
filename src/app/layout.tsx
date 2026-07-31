@@ -3,12 +3,10 @@ import React from "react";
 import {
   Bebas_Neue,
   Inter,
-  Geist_Mono,
   Protest_Revolution,
   Water_Brush,
 } from "next/font/google";
 import { SiteHeader } from "@/layout";
-import { ThemeProvider } from "@/providers";
 import "./globals.css";
 
 const inter = Inter({
@@ -19,11 +17,6 @@ const inter = Inter({
 const bebasNeue = Bebas_Neue({
   variable: "--font-heading",
   weight: "400",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
   subsets: ["latin"],
 });
 
@@ -40,7 +33,7 @@ const waterBrush = Water_Brush({
 });
 
 export const metadata: Metadata = {
-  title: "Ahmer · Software Engineer",
+  title: "M. Ahmer · Software Engineer",
   description: "Portfolio of Ahmer, a software engineer.",
 };
 
@@ -52,19 +45,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      suppressHydrationWarning
-      className={`${inter.variable} ${bebasNeue.variable} ${geistMono.variable} ${protestRevolution.variable} ${waterBrush.variable} h-full antialiased`}
+      className={`${inter.variable} ${bebasNeue.variable} ${protestRevolution.variable} ${waterBrush.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem={false}
-          disableTransitionOnChange
-        >
-          <SiteHeader />
-          {children}
-        </ThemeProvider>
+      <body className="min-h-full flex flex-col" suppressHydrationWarning>
+        <SiteHeader />
+        {children}
       </body>
     </html>
   );

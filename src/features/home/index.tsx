@@ -15,7 +15,7 @@ const DynamicForegroundCrows = dynamic(() => Promise.resolve(ForegroundCrows), {
   ssr: false,
 });
 
-export default function HeroV2() {
+export default function Home() {
   return (
     <div className="relative h-screen w-full">
       <DynamicBackgroundScene />

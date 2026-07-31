@@ -6,7 +6,6 @@ Ahmer's portfolio — a dark-themed, anime-inspired site built with Next.js, Tai
 
 - [Next.js](https://nextjs.org) (App Router, Turbopack) + React 19
 - Tailwind CSS v4, [shadcn/ui](https://ui.shadcn.com) on Base UI primitives
-- [next-themes](https://github.com/pacocoursey/next-themes) for the dark/light toggle
 - [Motion](https://motion.dev) for animation
 
 ## Getting started

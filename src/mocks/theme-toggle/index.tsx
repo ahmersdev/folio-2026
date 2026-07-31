@@ -5,8 +5,9 @@ import { useTheme } from "next-themes";
 import { Switch } from "@base-ui/react/switch";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
-import { ClosedEye, SharinganEye } from "@/assets/icons";
-import { TOGGLE_TRAVEL } from "@/constants";
+import { ClosedEye, SharinganEye } from "../icons";
+
+const TOGGLE_TRAVEL = 20;
 
 export default function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
