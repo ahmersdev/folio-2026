@@ -10,7 +10,7 @@ export default function ForegroundCrows() {
         shadows
         camera={{ position: [0, 1, 5], fov: 60 }}
         gl={{ alpha: true }}
-        style={{ background: "transparent" }}
+        style={{ background: "transparent", pointerEvents: "none" }}
       >
         <ambientLight intensity={0.3} color="#ff2b2b" />
         <ambientLight intensity={1.5} color="#ffffff" />
