@@ -4,25 +4,13 @@ import { cn } from "@/lib/utils";
 import { SharinganIrisImg } from "@/assets/images";
 import { IScrollIndicatorProps } from "./scroll-indicator.interface";
 import CircularText from "../circular-text";
+import useScrollIndicator from "./use-scroll-indicator";
 
 export default function ScrollIndicator(props: IScrollIndicatorProps) {
-  const {
-    targetId = "projects",
-    className,
-    ringText = "• ABOUT ME • TSUKUYOMI SYSTEM • ABOUT ME",
-  } = props;
+  const { className, ringText = "• ABOUT ME • TSUKUYOMI SYSTEM • ABOUT ME" } =
+    props;
 
-  const handleScroll = () => {
-    const targetElement = document.getElementById(targetId);
-    if (targetElement) {
-      targetElement.scrollIntoView({ behavior: "smooth" });
-    } else {
-      window.scrollTo({
-        top: window.innerHeight,
-        behavior: "smooth",
-      });
-    }
-  };
+  const { handleScroll } = useScrollIndicator(props);
 
   return (
     <button

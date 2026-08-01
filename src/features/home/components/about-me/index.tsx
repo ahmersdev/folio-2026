@@ -1,6 +1,6 @@
 export default function AboutMe() {
   return (
-    <div>
+    <div id={"about-me"}>
       <p>About Me</p>
     </div>
   );
