@@ -7,6 +7,7 @@ import {
   ForegroundCrows,
   BackgroundScene,
 } from "./components";
+import ScrollIndicator from "@/components/scroll-indicator";
 
 const DynamicBackgroundScene = dynamic(() => Promise.resolve(BackgroundScene), {
   ssr: false,
@@ -21,6 +22,8 @@ export default function HeroBanner() {
       <DynamicBackgroundScene />
 
       <HeroCopy />
+
+      <ScrollIndicator />
 
       <HeroSocials />
 
