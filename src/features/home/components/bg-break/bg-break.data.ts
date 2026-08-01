@@ -17,7 +17,7 @@ export const MAX_CONCURRENT_LIFTS = 5;
 // Lift height in world units, not a pixel value — "a couple pixels" of
 // screen displacement depends on camera FOV/distance and isn't practically
 // convertible to an exact figure. Tune visually against the running scene.
-export const LIFT_HEIGHT_UNITS = 0.1;
+export const LIFT_HEIGHT_UNITS = 0.15;
 
 // Ease in on the lift, brief hold at the peak, slower ease-out to settle —
 // reads as something shifting and resettling rather than a twitch.
@@ -34,3 +34,8 @@ export const LIFT_DOWN_DURATION_S = 2;
 export const LAVA_MATERIAL_NAME = "LavaBaseMaterial";
 export const LAVA_FLOW_SPEED_X = 0.015;
 export const LAVA_FLOW_SPEED_Y = 0;
+
+// Hover response needs to feel immediate, not scripted — no fixed hold,
+// short up/down, so a fast in-and-out doesn't get stuck mid-cycle.
+export const HOVER_LIFT_UP_DURATION_S = 0.15;
+export const HOVER_LIFT_DOWN_DURATION_S = 0.25;

@@ -65,3 +65,20 @@ export function prefersReducedMotion() {
   if (typeof window === "undefined") return false;
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
+
+// Linear step toward target, scaled by duration, not a scripted sine cycle —
+// hover needs to handle target reversing mid-flight (fast in/out) without
+// waiting for a fixed-duration cycle to finish first.
+export function stepHoverValue(
+  current: number,
+  target: number,
+  delta: number,
+  upDuration: number,
+  downDuration: number,
+) {
+  const duration = target > current ? upDuration : downDuration;
+  const step = delta / duration;
+  return target > current
+    ? Math.min(target, current + step)
+    : Math.max(target, current - step);
+}
