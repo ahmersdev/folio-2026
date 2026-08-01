@@ -1,30 +1,9 @@
-"use client";
-
-import dynamic from "next/dynamic";
-import {
-  HeroCopy,
-  HeroSocials,
-  ForegroundCrows,
-  BackgroundScene,
-} from "./components/hero-banner";
-
-const DynamicBackgroundScene = dynamic(() => Promise.resolve(BackgroundScene), {
-  ssr: false,
-});
-const DynamicForegroundCrows = dynamic(() => Promise.resolve(ForegroundCrows), {
-  ssr: false,
-});
+import { HeroBanner } from "./components";
 
 export default function Home() {
   return (
-    <div className="relative h-screen w-full">
-      <DynamicBackgroundScene />
-
-      <HeroCopy />
-
-      <HeroSocials />
-
-      <DynamicForegroundCrows />
-    </div>
+    <>
+      <HeroBanner />
+    </>
   );
 }
