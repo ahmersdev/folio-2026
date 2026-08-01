@@ -15,9 +15,9 @@ export default function CircularText(props: ICircularText) {
         return (
           <span
             key={index}
-            className="absolute left-1/2 top-0 origin-[50%_64px] -translate-x-1/2 font-cinzel text-[12px] font-bold uppercase tracking-normal text-muted-foreground transition-colors duration-300 group-hover:text-foreground"
+            className="absolute left-1/2 top-1/2 origin-center font-cinzel text-[12px] font-bold uppercase tracking-normal text-muted-foreground transition-colors duration-300 group-hover:text-foreground"
             style={{
-              transform: `translateX(-50%) rotate(${rotation}deg)`,
+              transform: `translate(-50%, -50%) rotate(${rotation}deg) translateY(-64px)`,
             }}
           >
             {char}
