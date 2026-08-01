@@ -3,9 +3,14 @@ import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { SharinganIrisImg } from "@/assets/images";
 import { IScrollIndicatorProps } from "./scroll-indicator.interface";
+import CircularText from "../circular-text";
 
 export default function ScrollIndicator(props: IScrollIndicatorProps) {
-  const { targetId = "projects", className } = props;
+  const {
+    targetId = "projects",
+    className,
+    ringText = "• ABOUT ME • TSUKUYOMI SYSTEM • ABOUT ME",
+  } = props;
 
   const handleScroll = () => {
     const targetElement = document.getElementById(targetId);
@@ -25,8 +30,8 @@ export default function ScrollIndicator(props: IScrollIndicatorProps) {
       type="button"
       aria-label="Scroll to inspect system"
       className={cn(
-        "pointer-events-auto absolute top-[60%] left-1/2 z-20 -translate-x-1/2 sm:bottom-8",
-        "group relative flex size-28 sm:size-32 items-center justify-center cursor-pointer select-none",
+        "pointer-events-auto absolute bottom-6 left-1/2 z-20 -translate-x-1/2 sm:bottom-8",
+        "group flex size-32 items-center justify-center cursor-pointer select-none",
         "transition-transform duration-300 hover:scale-105",
         className,
       )}
@@ -69,23 +74,12 @@ export default function ScrollIndicator(props: IScrollIndicatorProps) {
         />
       </div>
 
-      {/* 2. Concentric Ring Divider */}
-      <div className="absolute inset-5 sm:inset-6 rounded-full border border-border/70 transition-all duration-300 group-hover:border-primary/60 group-hover:shadow-[0_0_12px_rgba(194,36,54,0.3)]" />
+      {/* 2. Concentric Ring Divider (5px Gap from core) */}
+      <div className="absolute inset-5 sm:inset-6 rounded-full border border-primary/50 transition-all duration-300 group-hover:border-primary group-hover:shadow-[0_0_12px_rgba(194,36,54,0.3)]" />
 
-      {/* 3. Outer Rotating Circular Text */}
+      {/* 3. Outer Rotating Circular Text (Pure CSS - 100% Reliable) */}
       <div className="absolute inset-0 size-full animate-[spin_12s_linear_infinite] motion-reduce:animate-none group-hover:animation-duration-[6s]">
-        <svg viewBox="0 0 100 100" className="size-full">
-          <path
-            id="textPath"
-            d="M 50, 50 m -43, 0 a 43,43 0 1,1 86,0 a 43,43 0 1,1 -86,0"
-            fill="none"
-          />
-          <text className="font-cinzel text-[7.5px] font-bold fill-muted-foreground tracking-[0.22em] uppercase transition-colors duration-300 group-hover:fill-foreground">
-            <textPath href="#textPath" startOffset="0%">
-              • SCROLL TO INSPECT • TSUKUYOMI SYSTEM
-            </textPath>
-          </text>
-        </svg>
+        <CircularText text={ringText} />
       </div>
     </button>
   );
