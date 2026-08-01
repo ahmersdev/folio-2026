@@ -7,9 +7,6 @@ export type TFlightConfig = {
   flapAmplitude: number;
   undulationAmplitude: number;
   undulationCycles: number;
-  // 0-1 starting point along the path, so multiple crows don't all enter
-  // at the same moment.
-  phaseOffset: number;
 };
 
 export interface ICrowProps {

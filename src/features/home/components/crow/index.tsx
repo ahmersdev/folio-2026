@@ -7,12 +7,13 @@ import { ICrowProps } from "./crow.interface";
 import useCrow from "./use-crow";
 
 export default function Crow({ config }: ICrowProps) {
-  const { group, wingL, wingR, crowBody, wingLMesh, wingRMesh } = useCrow({
-    config,
-  });
+  const { group, wingL, wingR, crowBody, wingLMesh, wingRMesh, visible } =
+    useCrow({
+      config,
+    });
 
   return (
-    <group ref={group} scale={config.scale}>
+    <group ref={group} scale={config.scale} visible={visible}>
       <primitive object={crowBody} />
       <primitive object={wingLMesh} ref={wingL} />
       <primitive object={wingRMesh} ref={wingR} />
