@@ -7,9 +7,9 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
   --font-heading: var(--font-heading);
-  --font-display: var(--font-display);
-  --font-brush: var(--font-brush);
-  --color-ring: var(--ring);
+  --font-protest-revolution: var(--font-protest-revolution);
+  --font-cinzel-decorative: var(--font-cinzel-decorative);
+  --font-cinzel: var(--font-cinzel);
   --color-border: var(--border);
   --color-muted-foreground: var(--muted-foreground);
   --color-primary: var(--primary);
@@ -21,12 +21,11 @@
   --primary: #c22436;
   --muted-foreground: #cec4c3;
   --border: #3a2224;
-  --ring: #c22436;
 }
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border outline-primary/50;
   }
   body {
     @apply bg-background text-foreground;

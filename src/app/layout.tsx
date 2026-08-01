@@ -4,7 +4,8 @@ import {
   Bebas_Neue,
   Inter,
   Protest_Revolution,
-  Water_Brush,
+  Cinzel,
+  Cinzel_Decorative,
 } from "next/font/google";
 import { SiteHeader } from "@/layout";
 import "./globals.css";
@@ -21,13 +22,19 @@ const bebasNeue = Bebas_Neue({
 });
 
 const protestRevolution = Protest_Revolution({
-  variable: "--font-display",
+  variable: "--font-protest-revolution",
   weight: "400",
   subsets: ["latin"],
 });
 
-const waterBrush = Water_Brush({
-  variable: "--font-brush",
+const cinzelDecorative = Cinzel_Decorative({
+  variable: "--font-cinzel-decorative",
+  weight: "400",
+  subsets: ["latin"],
+});
+
+const cinzel = Cinzel({
+  variable: "--font-cinzel",
   weight: "400",
   subsets: ["latin"],
 });
@@ -45,7 +52,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${bebasNeue.variable} ${protestRevolution.variable} ${waterBrush.variable} h-full antialiased`}
+      className={`${inter.variable} ${bebasNeue.variable} ${protestRevolution.variable} ${cinzelDecorative.variable} ${cinzel.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <SiteHeader />

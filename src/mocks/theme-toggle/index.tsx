@@ -31,7 +31,7 @@ export default function ThemeToggle() {
       aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
       className={cn(
         "relative inline-flex h-7 w-13 shrink-0 items-center rounded-full border border-border bg-secondary p-1 transition-colors duration-500 outline-none",
-        "focus-visible:ring-3 focus-visible:ring-ring/50",
+        "focus-visible:ring-3 focus-visible:ring-primary/50",
       )}
       style={{ perspective: 300 }}
     >
