@@ -10,7 +10,7 @@ export default function TaglineBanner(props: ITaglineBannerProps) {
     className,
   } = props;
   return (
-    <div className={cn("relative z-10 max-w-4xl", className)}>
+    <div className={cn("relative max-w-4xl", className)}>
       <h1
         className={cn(
           "font-protest-revolution text_foreground",

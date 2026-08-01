@@ -11,7 +11,7 @@ export default function HandwrittenText(props: IHandwrittenTextProps) {
   return (
     <span
       className={cn(
-        "font-cinzel-decorative text-foreground font-bold tracking-[0.2em] whitespace-nowrap",
+        "font-cinzel-decorative z-10 text-foreground font-bold tracking-[0.2em] whitespace-nowrap",
         "text-4xl sm:text-6xl md:text-7xl",
         "inline-block",
         "[text-shadow:0_4px_16px_rgba(0,0,0,0.9)]",
