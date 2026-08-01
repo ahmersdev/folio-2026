@@ -1,0 +1,52 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-heading: var(--font-heading);
+  --font-protest-revolution: var(--font-protest-revolution);
+  --font-cinzel-decorative: var(--font-cinzel-decorative);
+  --font-cinzel: var(--font-cinzel);
+  --color-border: var(--border);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-primary: var(--primary);
+}
+
+:root {
+  --background: #150b0c;
+  --foreground: #ede6e4;
+  --primary: #c22436;
+  --muted-foreground: #cec4c3;
+  --border: #3a2224;
+}
+
+.light {
+  --background: #ede6e4;
+  --foreground: #150b0c;
+  --primary: #c22436;
+  --muted-foreground: #cec4c3;
+  --border: #3a2224;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-primary/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading uppercase tracking-wider text-foreground;
+  }
+}
