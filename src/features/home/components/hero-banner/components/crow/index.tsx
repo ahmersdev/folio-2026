@@ -5,10 +5,11 @@
 import { ICrowProps } from "./crow.interface";
 import useCrow from "./use-crow";
 
-export default function Crow({ config }: ICrowProps) {
+export default function Crow({ config, onShed }: ICrowProps) {
   const { group, wingL, wingR, crowBody, wingLMesh, wingRMesh, visible } =
     useCrow({
       config,
+      onShed,
     });
 
   return (

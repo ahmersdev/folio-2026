@@ -18,7 +18,18 @@ const INITIAL_ENTRY_DELAY_MAX = 10;
 const REENTRY_DELAY_MIN = 10;
 const REENTRY_DELAY_MAX = 30;
 
-export default function useCrow({ config }: ICrowProps) {
+// Chance a given flight sheds a feather at all — kept rare so a feather
+// reads as an event tied to a specific crow, not ambient weather.
+const SHED_CHANCE = 0.5;
+// Progress window (0-1 along the flight path) in which a shedding flight
+// drops its feather — mid-pass, well clear of the off-screen entry/exit.
+const SHED_PROGRESS_MIN = 0.25;
+const SHED_PROGRESS_MAX = 0.6;
+// Local-space distance from the crow's center to a wingtip, used as the
+// shed origin so the feather appears to come off the wing.
+const WING_OFFSET = 0.5;
+
+export default function useCrow({ config, onShed }: ICrowProps) {
   const { nodes } = useGLTF(CROW_GLB_PATH);
 
   // useGLTF caches and returns the same node objects for every instance;
@@ -34,12 +45,19 @@ export default function useCrow({ config }: ICrowProps) {
   const wingR = useRef<THREE.Object3D>(null);
   const progress = useRef(0);
   const behind = useMemo(() => new THREE.Vector3(), []);
+  const prevPosition = useMemo(() => new THREE.Vector3(), []);
+  const shedVelocity = useMemo(() => new THREE.Vector3(), []);
+  const shedPosition = useMemo(() => new THREE.Vector3(), []);
 
   const [visible, setVisible] = useState(false);
   const phase = useRef<"waiting" | "flying">("waiting");
   // Seeded lazily on the first useFrame call rather than here, since
   // Math.random() during render is impure and the compiler flags it.
   const timer = useRef<number | null>(null);
+  // Null when this flight won't shed at all; otherwise the progress value
+  // at which it does. Rolled fresh each time a flight starts.
+  const shedProgress = useRef<number | null>(null);
+  const hasShed = useRef(false);
 
   function positionAt(p: number, out: THREE.Vector3) {
     out.set(
@@ -62,6 +80,12 @@ export default function useCrow({ config }: ICrowProps) {
       if (timer.current > 0) return;
       phase.current = "flying";
       progress.current = 0;
+      hasShed.current = false;
+      shedProgress.current =
+        Math.random() < SHED_CHANCE
+          ? SHED_PROGRESS_MIN +
+            Math.random() * (SHED_PROGRESS_MAX - SHED_PROGRESS_MIN)
+          : null;
       setVisible(true);
     }
 
@@ -76,12 +100,37 @@ export default function useCrow({ config }: ICrowProps) {
     }
 
     if (group.current) {
+      prevPosition.copy(group.current.position);
       positionAt(progress.current, group.current.position);
       // crow.glb's face points toward local +Z, the opposite of three.js's
       // -Z lookAt convention, so aim at a point just behind on the path
       // instead of ahead — that leaves the face pointing forward.
       positionAt(progress.current - LOOKBEHIND, behind);
       group.current.lookAt(behind);
+
+      if (
+        onShed &&
+        shedProgress.current !== null &&
+        !hasShed.current &&
+        progress.current >= shedProgress.current
+      ) {
+        hasShed.current = true;
+        // Velocity from this frame's displacement, becomes the feather's
+        // initial momentum (see falling-feathers' impulse decay).
+        if (delta > 0) {
+          shedVelocity
+            .copy(group.current.position)
+            .sub(prevPosition)
+            .divideScalar(delta);
+        }
+        const side = Math.random() < 0.5 ? -1 : 1;
+        shedPosition.set(side * WING_OFFSET, 0, 0);
+        group.current.localToWorld(shedPosition);
+        onShed({
+          position: shedPosition.clone(),
+          velocity: shedVelocity.clone(),
+        });
+      }
     }
 
     const flap =

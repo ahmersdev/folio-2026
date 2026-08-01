@@ -1,7 +1,13 @@
 import { useEffect, useMemo, useRef } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
-import type { MeshStandardMaterial, Object3D, Texture } from "three";
+import {
+  Raycaster,
+  Vector2,
+  type MeshStandardMaterial,
+  type Object3D,
+  type Texture,
+} from "three";
 import {
   BG_BREAK_GLB_PATH,
   FRAGMENT_COUNT,
@@ -47,18 +53,18 @@ export default function useBgBreak() {
     return rest;
   }, [nodes]);
 
-  // Flat array of just the fragment meshes, tagged with their index, so the
-  // raycast never has to test Moon/clouds/lava — only this array.
-  const fragmentMeshes = useMemo(() => {
+  // Map each Object3D mesh to its fragment index without mutating the GLTF nodes
+  const { fragmentMeshes, meshIndexMap } = useMemo(() => {
     const arr: Object3D[] = [];
+    const map = new Map<Object3D, number>();
     for (let i = 0; i < FRAGMENT_COUNT; i++) {
       const node = nodes[`${FRAGMENT_NAME_PREFIX}${i}`];
       if (node) {
-        node.userData.fragmentIndex = i;
         arr.push(node);
+        map.set(node, i);
       }
     }
-    return arr;
+    return { fragmentMeshes: arr, meshIndexMap: map };
   }, [nodes]);
 
   const lavaTextures = useMemo(() => {
@@ -88,6 +94,8 @@ export default function useBgBreak() {
   useEffect(() => {
     if (reducedMotion) return;
     const el = gl.domElement;
+    const raycaster = new Raycaster();
+    const ndc = new Vector2(); // Create a reusable Vector2 instance
 
     const handlePointerLeave = () => {
       pointerInsideRef.current = false;
@@ -100,18 +108,17 @@ export default function useBgBreak() {
       if (event.pointerType !== "touch") return;
 
       const rect = el.getBoundingClientRect();
-      const ndc = {
-        x: ((event.clientX - rect.left) / rect.width) * 2 - 1,
-        y: -((event.clientY - rect.top) / rect.height) * 2 + 1,
-      };
 
-      const raycaster = new (require("three").Raycaster)();
+      // Set x and y directly on the Vector2 instance
+      ndc.set(
+        ((event.clientX - rect.left) / rect.width) * 2 - 1,
+        -((event.clientY - rect.top) / rect.height) * 2 + 1,
+      );
+
       raycaster.setFromCamera(ndc, camera);
       const hits = raycaster.intersectObjects(fragmentMeshes, false);
-      const hitIndex =
-        hits.length > 0
-          ? (hits[0].object.userData.fragmentIndex as number)
-          : null;
+      const hitMesh = hits.length > 0 ? hits[0].object : null;
+      const hitIndex = hitMesh ? (meshIndexMap.get(hitMesh) ?? null) : null;
 
       touchLockedIndexRef.current =
         touchLockedIndexRef.current === hitIndex ? null : hitIndex;
@@ -125,7 +132,7 @@ export default function useBgBreak() {
       el.removeEventListener("pointerenter", handlePointerEnter);
       el.removeEventListener("pointerdown", handlePointerDown);
     };
-  }, [gl, camera, fragmentMeshes, reducedMotion]);
+  }, [gl, camera, fragmentMeshes, meshIndexMap, reducedMotion]);
 
   /* eslint-disable react-hooks/immutability */
   useFrame((state, delta) => {
@@ -207,10 +214,8 @@ export default function useBgBreak() {
         fragmentMeshes.length > 0
           ? state.raycaster.intersectObjects(fragmentMeshes, false)
           : [];
-      overIndex =
-        hits.length > 0
-          ? (hits[0].object.userData.fragmentIndex as number)
-          : null;
+      const hitMesh = hits.length > 0 ? hits[0].object : null;
+      overIndex = hitMesh ? (meshIndexMap.get(hitMesh) ?? null) : null;
     }
 
     if (overIndex !== hoveredIndexRef.current) {

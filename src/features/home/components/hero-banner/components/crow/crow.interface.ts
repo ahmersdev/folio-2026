@@ -1,3 +1,5 @@
+import { TFeatherSpawn } from "../falling-feathers/falling-feathers.interface";
+
 export type TFlightConfig = {
   start: [number, number, number];
   end: [number, number, number];
@@ -11,4 +13,5 @@ export type TFlightConfig = {
 
 export interface ICrowProps {
   config: TFlightConfig;
+  onShed?: (spawn: TFeatherSpawn) => void;
 }
