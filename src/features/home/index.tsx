@@ -6,7 +6,7 @@ import {
   HeroSocials,
   ForegroundCrows,
   BackgroundScene,
-} from "./components";
+} from "./components/hero-banner";
 
 const DynamicBackgroundScene = dynamic(() => Promise.resolve(BackgroundScene), {
   ssr: false,
