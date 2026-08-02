@@ -7,7 +7,7 @@ export default function HeroSocials() {
   return (
     <div
       className={cn(
-        "pointer-events-auto fixed right-6 bottom-8 z-10 flex flex-col sm:right-10 sm:bottom-10 sm:w-48",
+        "pointer-events-auto absolute right-6 bottom-8 z-10 flex flex-col sm:right-10 sm:bottom-10 sm:w-48",
         "divide-y divide-border/60 rounded-xl border border-border/40 p-2",
         "backdrop-blur-md shadow-2xl transition-all duration-300",
       )}
@@ -28,10 +28,10 @@ export default function HeroSocials() {
         >
           <span className="flex items-center gap-2.5">
             <Icon className="size-4 shrink-0 transition-colors duration-300 group-hover:text-primary" />
-            <span>{label}</span>
+            <span className="hidden sm:inline">{label}</span>
           </span>
 
-          <div className="relative flex size-4.5 items-center justify-center shrink-0">
+          <div className="relative hidden sm:flex size-4.5 items-center justify-center shrink-0">
             <ArrowUpRight
               className={cn(
                 "size-4.5 transition-all duration-300",
