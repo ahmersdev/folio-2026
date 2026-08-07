@@ -3,25 +3,22 @@
 "use no memo";
 
 import * as THREE from "three";
-import { FEATHER_COLOR, MAX_FEATHERS } from "./falling-feathers.data";
+import { MAX_FEATHERS } from "./falling-feathers.data";
 import { IFallingFeathersProps } from "./falling-feathers.interface";
 import useFallingFeathers from "./use-falling-feathers";
 
 export default function FallingFeathers({ spawnQueue }: IFallingFeathersProps) {
-  const { geometry, texture, setMeshRef, setMaterialRef } = useFallingFeathers({
-    spawnQueue,
-  });
+  const { setMeshRef, setMaterialRef } = useFallingFeathers({ spawnQueue });
 
-  if (!texture) return null;
-
+  // Geometry and the material's map are assigned imperatively per-spawn
+  // (use-falling-feathers.ts) since which of the three feather images a
+  // slot gets is randomized fresh each time it's reused.
   return (
     <>
       {Array.from({ length: MAX_FEATHERS }, (_, i) => (
-        <mesh key={i} ref={setMeshRef(i)} geometry={geometry} visible={false}>
+        <mesh key={i} ref={setMeshRef(i)} visible={false}>
           <meshStandardMaterial
             ref={setMaterialRef(i)}
-            color={FEATHER_COLOR}
-            alphaMap={texture}
             transparent
             opacity={0}
             depthWrite={false}

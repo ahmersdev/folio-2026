@@ -1,12 +1,15 @@
 import { useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
+import { useTexture } from "@react-three/drei";
 import * as THREE from "three";
+import { FeatherOne, FeatherThree, FeatherTwo } from "@/assets/images";
 import {
   DESPAWN_Y,
   DRIFT_Z,
   FADE_IN,
   FADE_OUT,
   FALL_SPEED,
+  FEATHER_HEIGHT,
   IMPULSE_DECAY,
   MAX_FEATHERS,
   MAX_LIFETIME,
@@ -21,12 +24,11 @@ import {
   IFallingFeathersProps,
   TFeatherSlot,
 } from "./falling-feathers.interface";
-import {
-  createFeatherGeometry,
-  createFeatherTexture,
-  prefersReducedMotion,
-  randomInRange,
-} from "./falling-feathers.utils";
+import { prefersReducedMotion, randomInRange } from "./falling-feathers.utils";
+
+// Three source images (real feathers, pre-cut with alpha) — one is picked
+// at random per shed so repeated feathers don't look identical.
+const FEATHER_IMAGES = [FeatherOne, FeatherTwo, FeatherThree];
 
 function createSlot(): TFeatherSlot {
   return {
@@ -50,8 +52,30 @@ export default function useFallingFeathers({
   // bg-break.utils.ts's prefersReducedMotion.
   const reducedMotion = useMemo(() => prefersReducedMotion(), []);
 
-  const geometry = useMemo(() => createFeatherGeometry(), []);
-  const texture = useMemo(() => createFeatherTexture(), []);
+  // useTexture suspends until every image is loaded, so by the time this
+  // component's body runs past this line each texture is ready — set their
+  // colorSpace in the onLoad callback (an effect, not render) rather than
+  // mutating the returned array directly.
+  const textures = useTexture(
+    useMemo(() => FEATHER_IMAGES.map((image) => image.src), []),
+    (loaded) => {
+      const list = Array.isArray(loaded) ? loaded : [loaded];
+      list.forEach((tex) => {
+        tex.colorSpace = THREE.SRGBColorSpace;
+      });
+    },
+  );
+
+  // A separate plane per source image, sized to that image's own aspect
+  // ratio so none of the three feathers gets stretched.
+  const geometries = useMemo(
+    () =>
+      FEATHER_IMAGES.map((image) => {
+        const aspect = image.width / image.height;
+        return new THREE.PlaneGeometry(FEATHER_HEIGHT * aspect, FEATHER_HEIGHT);
+      }),
+    [],
+  );
 
   const slots = useRef<TFeatherSlot[]>(
     Array.from({ length: MAX_FEATHERS }, createSlot),
@@ -94,14 +118,21 @@ export default function useFallingFeathers({
         slot.driftZ = randomInRange(DRIFT_Z);
         slot.impulse.copy(spawn.velocity);
 
+        const variant = Math.floor(Math.random() * FEATHER_IMAGES.length);
+
         const mesh = meshRefs.current[index];
         if (mesh) {
+          mesh.geometry = geometries[variant];
           mesh.position.copy(spawn.position);
           mesh.rotation.set(0, Math.random() * Math.PI * 2, 0);
           mesh.visible = true;
         }
         const material = materialRefs.current[index];
-        if (material) material.opacity = 0;
+        if (material) {
+          material.map = textures[variant];
+          material.needsUpdate = true;
+          material.opacity = 0;
+        }
       }
     }
 
@@ -168,5 +199,5 @@ export default function useFallingFeathers({
     });
   });
 
-  return { geometry, texture, setMeshRef, setMaterialRef };
+  return { setMeshRef, setMaterialRef };
 }

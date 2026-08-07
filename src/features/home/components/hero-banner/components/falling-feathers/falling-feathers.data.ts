@@ -55,5 +55,6 @@ export const FADE_OUT = 1.5;
 export const DESPAWN_Y = -5.5;
 export const MAX_LIFETIME = 16;
 
-// Near-black with a faint crimson lean, matching the crow/cloud palette.
-export const FEATHER_COLOR = "#1a1012";
+// World-unit height of a spawned feather; width is derived per-image from
+// its own aspect ratio so none of the three source images gets stretched.
+export const FEATHER_HEIGHT = 0.26;
