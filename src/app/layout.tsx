@@ -8,6 +8,7 @@ import {
   Cinzel_Decorative,
 } from "next/font/google";
 import { SiteHeader } from "@/layout";
+import Preloader from "@/components/preloader";
 import "./globals.css";
 
 const inter = Inter({
@@ -55,6 +56,7 @@ export default function RootLayout({
       className={`${inter.variable} ${bebasNeue.variable} ${protestRevolution.variable} ${cinzelDecorative.variable} ${cinzel.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
+        <Preloader />
         <SiteHeader />
         {children}
       </body>

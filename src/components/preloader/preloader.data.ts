@@ -1,0 +1,11 @@
+export const MIN_DISPLAY_MS = 900;
+export const MAX_TIMEOUT_MS = 6000;
+export const EXIT_DURATION_MS = 1600;
+export const EXIT_EASING = "cubic-bezier(0.65, 0, 0.35, 1)";
+export const SESSION_STORAGE_KEY = "preloader-shown";
+export const LOADING_LABEL = "COMPILING BRILLIANCE";
+export const SLOW_LOAD_THRESHOLD_MS = 3000;
+export const SLOW_LOAD_LABEL = "STILL WARMING UP";
+export const ANNOUNCE_STEP = 25;
+export const RING_RADIUS = 46;
+export const RING_CIRCUMFERENCE = 2 * Math.PI * RING_RADIUS;
