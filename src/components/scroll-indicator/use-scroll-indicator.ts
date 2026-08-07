@@ -1,7 +1,7 @@
 import { IScrollIndicatorProps } from "./scroll-indicator.interface";
 
 export default function useScrollIndicator(props: IScrollIndicatorProps) {
-  const { targetId = "about-me" } = props;
+  const { targetId = "services" } = props;
 
   const handleScroll = () => {
     const targetElement = document.getElementById(targetId);

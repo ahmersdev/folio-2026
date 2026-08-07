@@ -7,7 +7,7 @@ import CircularText from "../circular-text";
 import useScrollIndicator from "./use-scroll-indicator";
 
 export default function ScrollIndicator(props: IScrollIndicatorProps) {
-  const { className, ringText = "• ABOUT ME • TSUKUYOMI SYSTEM • ABOUT ME" } =
+  const { className, ringText = " • SERVICES • TSUKUYOMI SYSTEM • SERVICES" } =
     props;
 
   const { handleScroll } = useScrollIndicator(props);
