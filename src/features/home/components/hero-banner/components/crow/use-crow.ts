@@ -29,6 +29,41 @@ const SHED_PROGRESS_MAX = 0.6;
 // shed origin so the feather appears to come off the wing.
 const WING_OFFSET = 0.5;
 
+// crow.glb's baked textures are genuinely dark (average ~30/255) and its
+// materials don't declare metallicFactor/roughnessFactor, which per the
+// glTF spec default to fully metallic. Fully metallic surfaces only show
+// environment reflections — this scene has no environment map — so the
+// diffuse texture was being suppressed almost entirely, crushing an
+// already-dark bird down to literal flat black. Correcting metalness alone
+// still isn't enough to lift that dark a texture into a visible range under
+// this scene's lighting, hence the color boost.
+const CROW_METALNESS = 0;
+const CROW_ROUGHNESS = 0.7;
+const CROW_COLOR_BOOST = 1;
+
+// Each of CrowBody/WingL/WingR has two glTF primitives (one per material —
+// see M_CrowBody/M_CrowWings), and GLTFLoader represents a multi-primitive
+// mesh as a Group with one child Mesh per primitive, not a single Mesh. So
+// this has to walk the whole subtree rather than assume `root` itself has
+// a `.material`. Each child's material is cloned (not the one useGLTF()
+// returns, which is shared across every crow instance) so the fix can be
+// applied without mutating a hook's return value in place.
+function fixCrowMaterial(root: THREE.Object3D) {
+  root.traverse((child) => {
+    if (
+      child instanceof THREE.Mesh &&
+      child.material instanceof THREE.MeshStandardMaterial
+    ) {
+      const material = child.material.clone();
+      material.metalness = CROW_METALNESS;
+      material.roughness = CROW_ROUGHNESS;
+      material.color.multiplyScalar(CROW_COLOR_BOOST);
+      child.material = material;
+    }
+  });
+  return root;
+}
+
 export default function useCrow({ config, onShed }: ICrowProps) {
   const { nodes } = useGLTF(CROW_GLB_PATH);
 
@@ -36,9 +71,18 @@ export default function useCrow({ config, onShed }: ICrowProps) {
   // since a three.js object can only have one parent at a time, rendering
   // those shared nodes directly would make all but the last crow invisible.
   // Clone once per instance — a plain clone is fine, there's no skeleton.
-  const crowBody = useMemo(() => nodes.CrowBody.clone(), [nodes]);
-  const wingLMesh = useMemo(() => nodes.WingL.clone(), [nodes]);
-  const wingRMesh = useMemo(() => nodes.WingR.clone(), [nodes]);
+  const crowBody = useMemo(
+    () => fixCrowMaterial(nodes.CrowBody.clone()),
+    [nodes],
+  );
+  const wingLMesh = useMemo(
+    () => fixCrowMaterial(nodes.WingL.clone()),
+    [nodes],
+  );
+  const wingRMesh = useMemo(
+    () => fixCrowMaterial(nodes.WingR.clone()),
+    [nodes],
+  );
 
   const group = useRef<THREE.Group>(null);
   const wingL = useRef<THREE.Object3D>(null);
