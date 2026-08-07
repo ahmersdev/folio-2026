@@ -19,12 +19,11 @@ export default function ForegroundCrows() {
         gl={{ alpha: true }}
         style={{ background: "transparent", pointerEvents: "none" }}
       >
-        <ambientLight intensity={0.3} color="#ff2b2b" />
-        <ambientLight intensity={1.5} color="#ffffff" />
+        <ambientLight intensity={1} color="#ffffff" />
         <directionalLight
-          intensity={1.5}
-          color="#ffffff"
-          position={[-4, 2, -3]}
+          intensity={2}
+          color="#ff2b2b"
+          position={[0, 4, -10]}
         />
 
         <Suspense fallback={null}>
