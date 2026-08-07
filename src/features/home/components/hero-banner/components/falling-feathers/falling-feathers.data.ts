@@ -58,3 +58,25 @@ export const MAX_LIFETIME = 16;
 // World-unit height of a spawned feather; width is derived per-image from
 // its own aspect ratio so none of the three source images gets stretched.
 export const FEATHER_HEIGHT = 0.26;
+
+// Rim glow tracing each feather's own silhouette, in the site's primary
+// brand color. Built from a copy of the feather's own alpha-cut texture
+// scaled up slightly and tinted — the sliver of margin outside the real
+// feather's edge is what reads as a glowing border, so this stays close to
+// 1 (a small excess, not a generic halo).
+export const GLOW_SCALE = 1.15;
+
+// Max glow opacity, applied on top of the feather's own fade envelope
+// (material.opacity). Additive blending amplifies perceived brightness, so
+// this is kept under 1.
+export const GLOW_OPACITY = 0.85;
+
+// Matches --primary in globals.css. Hardcoded like the scene's other
+// three.js colors (e.g. the crow rim light) since WebGL can't read CSS
+// custom properties.
+export const GLOW_COLOR = "#c22436";
+
+// Push behind the feather along camera-relative Z so the transparent
+// render pass doesn't flip-flop draw order between the glow and the
+// feather when they sit at (nearly) the same position.
+export const GLOW_Z_OFFSET = 0.01;

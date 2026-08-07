@@ -10,6 +10,9 @@ import {
   FADE_OUT,
   FALL_SPEED,
   FEATHER_HEIGHT,
+  GLOW_OPACITY,
+  GLOW_SCALE,
+  GLOW_Z_OFFSET,
   IMPULSE_DECAY,
   MAX_FEATHERS,
   MAX_LIFETIME,
@@ -82,6 +85,8 @@ export default function useFallingFeathers({
   );
   const meshRefs = useRef<(THREE.Mesh | null)[]>([]);
   const materialRefs = useRef<(THREE.MeshStandardMaterial | null)[]>([]);
+  const glowMeshRefs = useRef<(THREE.Mesh | null)[]>([]);
+  const glowMaterialRefs = useRef<(THREE.MeshBasicMaterial | null)[]>([]);
 
   function setMeshRef(index: number) {
     return (instance: THREE.Mesh | null) => {
@@ -92,6 +97,18 @@ export default function useFallingFeathers({
   function setMaterialRef(index: number) {
     return (instance: THREE.MeshStandardMaterial | null) => {
       materialRefs.current[index] = instance;
+    };
+  }
+
+  function setGlowMeshRef(index: number) {
+    return (instance: THREE.Mesh | null) => {
+      glowMeshRefs.current[index] = instance;
+    };
+  }
+
+  function setGlowMaterialRef(index: number) {
+    return (instance: THREE.MeshBasicMaterial | null) => {
+      glowMaterialRefs.current[index] = instance;
     };
   }
 
@@ -133,6 +150,26 @@ export default function useFallingFeathers({
           material.needsUpdate = true;
           material.opacity = 0;
         }
+
+        // The glow reuses the feather's own alpha-cut geometry/texture,
+        // scaled up slightly — the sliver of margin outside the real
+        // feather's edge is what reads as a glowing border tracing its
+        // actual silhouette, rather than a generic centered halo.
+        const glowMesh = glowMeshRefs.current[index];
+        if (glowMesh) {
+          glowMesh.geometry = geometries[variant];
+          glowMesh.position.copy(spawn.position);
+          glowMesh.position.z -= GLOW_Z_OFFSET;
+          glowMesh.rotation.set(0, mesh?.rotation.y ?? 0, 0);
+          glowMesh.scale.setScalar(GLOW_SCALE);
+          glowMesh.visible = true;
+        }
+        const glowMaterial = glowMaterialRefs.current[index];
+        if (glowMaterial) {
+          glowMaterial.map = textures[variant];
+          glowMaterial.needsUpdate = true;
+          glowMaterial.opacity = 0;
+        }
       }
     }
 
@@ -142,6 +179,8 @@ export default function useFallingFeathers({
 
       const mesh = meshRefs.current[index];
       const material = materialRefs.current[index];
+      const glowMesh = glowMeshRefs.current[index];
+      const glowMaterial = glowMaterialRefs.current[index];
       if (!mesh || !material) return;
 
       slot.age += delta;
@@ -166,6 +205,15 @@ export default function useFallingFeathers({
         delta;
       mesh.position.y -= (slot.fallSpeed - slot.impulse.y) * delta;
       mesh.position.z += slot.driftZ * delta;
+
+      if (glowMesh) {
+        glowMesh.position.set(
+          mesh.position.x,
+          mesh.position.y,
+          mesh.position.z - GLOW_Z_OFFSET,
+        );
+        glowMesh.rotation.copy(mesh.rotation);
+      }
 
       slot.impulse.multiplyScalar(Math.max(0, 1 - delta / IMPULSE_DECAY));
 
@@ -192,12 +240,17 @@ export default function useFallingFeathers({
         opacityFromLifetime,
       );
 
+      if (glowMaterial) {
+        glowMaterial.opacity = material.opacity * GLOW_OPACITY;
+      }
+
       if (mesh.position.y < DESPAWN_Y || slot.age > MAX_LIFETIME) {
         slot.active = false;
         mesh.visible = false;
+        if (glowMesh) glowMesh.visible = false;
       }
     });
   });
 
-  return { setMeshRef, setMaterialRef };
+  return { setMeshRef, setMaterialRef, setGlowMeshRef, setGlowMaterialRef };
 }
