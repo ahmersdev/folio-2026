@@ -47,6 +47,7 @@ export default function AboutMe() {
           <CustomButton
             label={ABOUT_CTA_LABEL}
             href={ABOUT_CTA_HREF}
+            target={"_blank"}
             className="mt-8"
           />
         </div>

@@ -5,7 +5,7 @@ import { ICustomButton } from "./custom-button.interface";
 import useCustomButton from "./use-custom-button";
 
 export default function CustomButton(props: ICustomButton) {
-  const { label, href, className } = props;
+  const { label, href, target = "_self", className } = props;
 
   const {
     containerRef,
@@ -23,6 +23,7 @@ export default function CustomButton(props: ICustomButton) {
     <a
       ref={containerRef}
       href={href}
+      target={target}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       className={cn(
