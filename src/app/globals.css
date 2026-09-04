@@ -1,26 +1,90 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-gray: var(--gray);
+  --color-black-secondary: var(--black-secondary);
+  --color-primary: var(--primary);
+  --color-jet-black: var(--jet-black);
+  --color-transparent: var(--transparent);
+  --color-white: var(--white);
+  --color-white-secondary: var(--white-secondary);
+  --font-sans: var(--font-dm-sans);
+  --font-heading: var(--font-bebas-neue);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --gray: #383838;
+  --black-secondary: #121212;
+  --primary: #b63331;
+  --jet-black: #0c0c0c;
+  --transparent: #fff0;
+  --white: #fff;
+  --white-secondary: #fdfdfd;
+  --gradient-primary: radial-gradient(
+    50% 50% at 50% 50%,
+    var(--primary) 0%,
+    var(--jet-black) 100%
+  );
+  --_typography---font-sizes--heading--h5: clamp(
+    1.75rem,
+    1.5376rem + 0.9061vw,
+    2.625rem
+  );
+  --_typography---font-sizes--heading--h4: clamp(
+    2rem,
+    1.2112rem + 3.3657vw,
+    5.25rem
+  );
+}
+
+@layer base {
+  body {
+    @apply bg-black-secondary text-gray;
+  }
+  html {
+    @apply font-sans;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  html::-webkit-scrollbar {
+    display: none;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+  }
+
+  /* GSAP SplitText's mask wrapper clips tightly to each character's
+     advance-width box, which cuts off diagonal glyphs (e.g. "A") whose ink
+     slightly overhangs that box in condensed display fonts. charsClass:"char"
+     names the wrapper "char-mask" (SplitText's own "-mask" suffix convention)
+     so it can be given breathing room here instead of at every call site. */
+  .char-mask {
+    overflow-clip-margin: 0.12em;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.has-custom-cursor {
+  cursor: none;
+}
+
+.has-custom-cursor a,
+.has-custom-cursor button {
+  cursor: none;
+}
+
+.cursor-dot {
+  display: none;
+}
+.has-custom-cursor .cursor-dot {
+  display: block;
+}
+@media (pointer: coarse) {
+  .cursor-dot {
+    display: none !important;
+  }
 }
