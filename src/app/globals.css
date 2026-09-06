@@ -5,12 +5,14 @@
   --color-black-secondary: var(--black-secondary);
   --color-background: var(--background);
   --color-primary: var(--primary);
+  --color-rose: var(--rose);
   --color-jet-black: var(--jet-black);
   --color-transparent: var(--transparent);
   --color-white: var(--white);
   --color-white-secondary: var(--white-secondary);
   --font-sans: var(--font-dm-sans);
   --font-heading: var(--font-bebas-neue);
+  --background-image-wipe: var(--gradient-wipe);
 }
 
 :root {
@@ -18,6 +20,7 @@
   --black-secondary: #121212;
   --background: #0d0c0c;
   --primary: #b63331;
+  --rose: #d48c9e;
   --jet-black: #0c0c0c;
   --transparent: #fff0;
   --white: #fff;
@@ -27,6 +30,12 @@
     var(--primary) 0%,
     var(--jet-black) 100%
   );
+  --gradient-heading: linear-gradient(
+    180deg,
+    var(--white-secondary) 32%,
+    var(--black-secondary) 90%
+  );
+  --gradient-wipe: linear-gradient(180deg, transparent 0%, var(--primary) 100%);
   --_typography---font-sizes--heading--h5: clamp(
     1.75rem,
     1.5376rem + 0.9061vw,
@@ -36,6 +45,16 @@
     2rem,
     1.2112rem + 3.3657vw,
     5.25rem
+  );
+  --_typography---font-sizes--nav--menu-item: clamp(
+    32px,
+    calc(3.36vw + 19.39px),
+    67.8px
+  );
+  --_typography---font-sizes--body--md: clamp(
+    16px,
+    calc(0.376vw + 14.59px),
+    20px
   );
 }
 
