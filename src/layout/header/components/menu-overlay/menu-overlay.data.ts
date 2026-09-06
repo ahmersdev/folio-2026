@@ -22,7 +22,7 @@ export const TAGLINE_ROTATE_DEG = -15;
 // destination as the top bar's "Works" link, just relabeled here.
 export const MENU_NAV_LINKS: INavLink[] = [
   { label: "HOME", href: ROUTES.HOME },
-  { label: "ABOUT US", href: ROUTES.ABOUT },
+  { label: "ABOUT", href: ROUTES.ABOUT },
   { label: "PROJECTS", href: ROUTES.WORKS },
   { label: "SERVICES", href: ROUTES.SERVICES },
   { label: "CONTACT", href: ROUTES.CONTACT },
