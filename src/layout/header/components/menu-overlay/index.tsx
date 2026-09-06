@@ -1,8 +1,7 @@
 "use client";
 
 import { CloseIcon } from "@/assets/icons";
-import { BRAND_TEXT } from "@/constants";
-import { HERO_SOCIAL_LINKS } from "@/features/home/components/hero/hero.data";
+import { BRAND_TEXT, SOCIAL_LINKS } from "@/constants";
 import { cn } from "@/lib/utils";
 import {
   CONTACT_EMAIL,
@@ -97,7 +96,7 @@ export default function MenuOverlay(props: IMenuOverlayProps) {
             Follow us
           </p>
           <div className="h-px w-5 md:w-10 bg-white-secondary" />
-          {HERO_SOCIAL_LINKS.map(({ label, href, Icon }) => (
+          {SOCIAL_LINKS.map(({ label, href, Icon }) => (
             <a
               key={label}
               aria-label={label}

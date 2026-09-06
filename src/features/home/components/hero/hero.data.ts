@@ -1,5 +1,4 @@
-import { LinkedinIcon, WhatsappIcon } from "@/assets/icons";
-import { IHeroSocialLink, IHeroStat } from "./hero.interface";
+import { IHeroStat } from "./hero.interface";
 
 export const HERO_TITLE = "AHMER DOCK";
 // Hardcoded line break (not left to max-width auto-wrap): "Digital Agency"
@@ -8,19 +7,6 @@ export const HERO_TITLE = "AHMER DOCK";
 export const HERO_SUBTITLE_LINES = ["BUILT-TO-SHIP", "FULL STACK DEV"];
 export const HERO_DESCRIPTION =
   "A FULL STACK DEVELOPER WHO TAKES PRODUCTS FROM IDEA TO LAUNCH, BUILDING THE FRONTEND, BACKEND, AND EVERYTHING IN BETWEEN.";
-
-export const HERO_SOCIAL_LINKS: IHeroSocialLink[] = [
-  {
-    label: "Whatsapp",
-    href: "https://wa.me/+923154806474",
-    Icon: WhatsappIcon,
-  },
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/in/ahmerdock/",
-    Icon: LinkedinIcon,
-  },
-];
 
 export const HERO_STAT: IHeroStat = {
   value: "4+ YRS",

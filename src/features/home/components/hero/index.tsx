@@ -5,12 +5,12 @@ import { StatBadgeIcon } from "@/assets/icons";
 import { HeroForegroundImg } from "@/assets/images";
 import {
   HERO_DESCRIPTION,
-  HERO_SOCIAL_LINKS,
   HERO_STAT,
   HERO_SUBTITLE_LINES,
   HERO_TITLE,
 } from "./hero.data";
 import useHero from "./use-hero";
+import { SOCIAL_LINKS } from "@/constants";
 
 export default function Hero() {
   const {
@@ -60,7 +60,7 @@ export default function Hero() {
           </p>
           <div className="h-px w-10 bg-white-secondary" />
           <div className="flex gap-4">
-            {HERO_SOCIAL_LINKS.map(({ label, href, Icon }) => (
+            {SOCIAL_LINKS.map(({ label, href, Icon }) => (
               <a
                 key={label}
                 aria-label="social link"
