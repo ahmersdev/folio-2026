@@ -27,7 +27,7 @@ export default function CustomButton(props: ICustomButton) {
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       className={cn(
-        `relative inline-flex items-center gap-3 rounded-full border-2 border-black-secondary
+        `relative inline-flex items-center gap-3 rounded-full border-2 border-white-secondary
         bg-transparent py-4 px-5.5
         md:px-7.5
         lg:py-5.75 lg:px-10`,
@@ -43,7 +43,7 @@ export default function CustomButton(props: ICustomButton) {
       <span
         ref={notch1Ref}
         aria-hidden
-        className="absolute -top-0.5 left-5.5 h-0.5 w-5 rounded-full bg-white
+        className="absolute -top-0.5 left-5.5 h-0.5 w-5 rounded-full bg-background
           md:left-7.5
           lg:left-10
           sm:w-6.25"
@@ -51,7 +51,7 @@ export default function CustomButton(props: ICustomButton) {
       <span
         ref={notch2Ref}
         aria-hidden
-        className="absolute -bottom-0.5 right-5.5 h-0.5 w-5 rounded-full bg-white
+        className="absolute -bottom-0.5 right-5.5 h-0.5 w-5 rounded-full bg-background
           md:right-7.5
           lg:right-10
           sm:w-6.25"
@@ -59,14 +59,14 @@ export default function CustomButton(props: ICustomButton) {
       <span
         ref={notch3Ref}
         aria-hidden
-        className="absolute right-14.5 -bottom-0.5 h-0.5 w-2.5 rounded-full bg-white
+        className="absolute right-14.5 -bottom-0.5 h-0.5 w-2.5 rounded-full bg-background
           md:right-16.5
           lg:right-19"
       />
 
       <span
         ref={dashRef}
-        className="h-0.5 w-5 shrink-0 rounded-full bg-black-secondary
+        className="h-0.5 w-5 shrink-0 rounded-full bg-white-secondary
           sm:w-6.25"
       />
       <span
@@ -75,7 +75,7 @@ export default function CustomButton(props: ICustomButton) {
       >
         <span
           ref={text1Ref}
-          className="block text-[20px] leading-5 font-heading text-black-secondary
+          className="block text-[20px] leading-5 font-heading
             md:text-[24px] md:leading-6"
         >
           {label}
@@ -83,7 +83,7 @@ export default function CustomButton(props: ICustomButton) {
         <span
           ref={text2Ref}
           aria-hidden
-          className="block text-[20px] leading-5 font-heading text-black-secondary
+          className="block text-[20px] leading-5 font-heading
             md:text-[24px] md:leading-6"
         >
           {label}

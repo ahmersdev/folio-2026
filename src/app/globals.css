@@ -3,6 +3,7 @@
 @theme inline {
   --color-gray: var(--gray);
   --color-black-secondary: var(--black-secondary);
+  --color-background: var(--background);
   --color-primary: var(--primary);
   --color-jet-black: var(--jet-black);
   --color-transparent: var(--transparent);
@@ -15,6 +16,7 @@
 :root {
   --gray: #383838;
   --black-secondary: #121212;
+  --background: #0d0c0c;
   --primary: #b63331;
   --jet-black: #0c0c0c;
   --transparent: #fff0;
@@ -39,7 +41,7 @@
 
 @layer base {
   body {
-    @apply bg-black-secondary text-gray;
+    @apply bg-background text-white-secondary;
   }
   html {
     @apply font-sans;

@@ -22,8 +22,8 @@ import {
 // Matches globals.css's --black-secondary / --white tokens. Passed as
 // literal hex (not the CSS var) since GSAP's color interpolation needs a
 // resolved value, not a custom-property reference.
-const FILL_COLOR = "#1a1a1a";
-const DASH_AND_TEXT_HOVER_COLOR = "#fff";
+const FILL_COLOR = "#b63331";
+const DASH_AND_TEXT_HOVER_COLOR = "#fdfdfd";
 
 export default function useCustomButton() {
   const containerRef = useRef<HTMLAnchorElement>(null);

@@ -16,12 +16,12 @@ export default function AboutMe() {
   const { titleRef } = useAboutMe();
 
   return (
-    <section className="relative overflow-clip bg-white px-[5%] py-16 text-black-secondary sm:py-20 md:py-28 lg:py-32">
+    <section className="relative overflow-clip px-[5%] py-16 sm:py-20 md:py-28 lg:py-32">
       <div className="mx-auto flex w-full max-w-[1680px] flex-col gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
         <div>
           <div className="mb-6 flex items-center gap-3">
             <span
-              className="size-4.5 shrink-0 rounded-full bg-black-secondary
+              className="size-4.5 shrink-0 rounded-full bg-white-secondary
                 md:size-5
                 lg:size-7"
             />
