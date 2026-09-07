@@ -18,6 +18,8 @@ export default function MenuLink(props: IMenuLinkProps) {
         onClick={onNavigate}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
+        onFocus={onMouseEnter}
+        onBlur={onMouseLeave}
         className="relative flex items-center justify-center overflow-hidden px-6 pt-6 md:pt-9 md:px-10"
       >
         <span

@@ -41,6 +41,7 @@ export default function MenuOverlay(props: IMenuOverlayProps) {
       <div className="flex flex-col">
         <div className="relative">
           <p
+            aria-hidden
             style={{
               background: "var(--gradient-heading)",
               WebkitBackgroundClip: "text",

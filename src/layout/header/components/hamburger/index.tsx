@@ -17,6 +17,8 @@ export default function Hamburger(props: IHamburgerProps) {
       onClick={onClick}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
+      onFocus={onMouseEnter}
+      onBlur={onMouseLeave}
       className="flex w-17.5 items-center justify-end lg:justify-center border-0 lg:border-b border-white-secondary pb-2"
     >
       <HamburgerIcon

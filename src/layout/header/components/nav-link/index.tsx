@@ -15,6 +15,8 @@ export default function NavLink(props: INavLink) {
         href={href}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
+        onFocus={onMouseEnter}
+        onBlur={onMouseLeave}
         className="flex flex-1 items-center justify-start gap-4"
       >
         <span className="size-3 shrink-0 rounded-full border border-white-secondary" />

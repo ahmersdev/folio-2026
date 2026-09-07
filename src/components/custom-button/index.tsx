@@ -28,6 +28,8 @@ export default function CustomButton(props: ICustomButton) {
       rel={target === "_blank" ? "noreferrer" : undefined}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
+      onFocus={onMouseEnter}
+      onBlur={onMouseLeave}
       className={cn(
         `relative inline-flex items-center gap-3 rounded-full border-2 border-white-secondary
         bg-transparent py-4 px-5.5

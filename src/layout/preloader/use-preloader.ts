@@ -85,8 +85,17 @@ export default function usePreloader() {
     if (phase === "hidden") return;
 
     document.documentElement.classList.add("overflow-hidden");
+
+    // The preloader visually covers the whole page, but nothing else stops
+    // Tab from reaching Header's nav links underneath it — inert removes
+    // the rest of the page from the tab order and accessibility tree for
+    // as long as the cover is up, matching the focus containment
+    // MenuOverlay already does for itself via its own Tab trap.
+    document.body.inert = true;
+
     return () => {
       document.documentElement.classList.remove("overflow-hidden");
+      document.body.inert = false;
     };
   }, [phase]);
 
