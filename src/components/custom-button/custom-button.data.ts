@@ -1,10 +1,7 @@
 // Reverse-engineered from the reference site's own interaction config —
 // pulled directly from its exported IX2 action lists ("Button primary hover
 // in"/"hover out") and its newer wf:hover interaction (for the text roll +
-// corner accents), not estimated. The previous version of this file only
-// covered the text roll; the button's own background fill and the dash
-// line's color/scale flip were missing entirely, which was the actual gap
-// between this component and the reference.
+// corner accents), not estimated.
 
 // Button's own background: transparent -> filled, and the dash line's
 // color flip (black -> white) run together, same duration/ease. Source

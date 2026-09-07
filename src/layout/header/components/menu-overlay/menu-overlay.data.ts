@@ -13,7 +13,6 @@ export const PANEL_EASE = "power1.out";
 export const CONTACT_EMAIL = "ahmer.dock@gmail.com";
 export const CONTACT_PHONE = WHATSAPP_PHONE_INTL;
 
-// Rotated tagline banner overlapping the brand watermark.
 export const TAGLINE_TEXT = "FULL STACK MIND, SHIPPING HANDS";
 export const TAGLINE_ROTATE_DEG = -15;
 

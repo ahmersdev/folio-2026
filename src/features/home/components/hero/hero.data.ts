@@ -1,8 +1,8 @@
 import { IHeroStat } from "./hero.interface";
 
 export const HERO_TITLE = "AHMER DOCK";
-// Hardcoded line break (not left to max-width auto-wrap): "Digital Agency"
-// combined sits right at the edge of the container width, so a font-metrics
+// Hardcoded line break (not left to max-width auto-wrap): the two lines
+// combined sit right at the edge of the container width, so a font-metrics
 // hair's-breadth difference between font builds can tip it onto a 3rd line.
 export const HERO_SUBTITLE_LINES = ["BUILT-TO-SHIP", "FULL STACK DEV"];
 export const HERO_DESCRIPTION =
