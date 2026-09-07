@@ -96,8 +96,16 @@ export default function useHero() {
         ease: PARALLAX_QUICK_TO_EASE,
       });
 
+      // Cached on enter rather than read fresh on every pointermove: the
+      // section's on-screen rect only changes from a scroll/resize, never
+      // from the mouse moving within it, so re-measuring per move is a
+      // repeated layout read for a value that's constant for the whole
+      // hover.
+      let rect = section.getBoundingClientRect();
+      const handlePointerEnter = () => {
+        rect = section.getBoundingClientRect();
+      };
       const handlePointerMove = (e: PointerEvent) => {
-        const rect = section.getBoundingClientRect();
         const nx = gsap.utils.clamp(
           -1,
           1,
@@ -116,9 +124,11 @@ export default function useHero() {
         yTo(0);
       };
 
+      section.addEventListener("pointerenter", handlePointerEnter);
       section.addEventListener("pointermove", handlePointerMove);
       section.addEventListener("pointerleave", handlePointerLeave);
       removeParallaxListeners = () => {
+        section.removeEventListener("pointerenter", handlePointerEnter);
         section.removeEventListener("pointermove", handlePointerMove);
         section.removeEventListener("pointerleave", handlePointerLeave);
       };
