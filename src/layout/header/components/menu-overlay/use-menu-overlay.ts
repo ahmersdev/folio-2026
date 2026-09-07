@@ -46,7 +46,10 @@ export default function useMenuOverlay(): IUseMenuOverlayReturn {
 
   const open = () => {
     if (phase !== "closed") return;
-    previouslyFocusedRef.current = document.activeElement as HTMLElement | null;
+    previouslyFocusedRef.current =
+      document.activeElement instanceof HTMLElement
+        ? document.activeElement
+        : null;
     setPhase("opening");
     tlRef.current?.play(0);
   };
