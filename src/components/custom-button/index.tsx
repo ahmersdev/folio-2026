@@ -3,6 +3,7 @@
 import { cn } from "@/lib/utils";
 import { ICustomButton } from "./custom-button.interface";
 import useCustomButton from "./use-custom-button";
+import Link from "next/link";
 
 export default function CustomButton(props: ICustomButton) {
   const { label, href, target = "_self", className } = props;
@@ -20,7 +21,7 @@ export default function CustomButton(props: ICustomButton) {
   } = useCustomButton();
 
   return (
-    <a
+    <Link
       ref={containerRef}
       href={href}
       target={target}
@@ -89,6 +90,6 @@ export default function CustomButton(props: ICustomButton) {
           {label}
         </span>
       </span>
-    </a>
+    </Link>
   );
 }
