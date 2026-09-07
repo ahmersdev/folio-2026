@@ -1,7 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { gsap } from "@/lib/gsap";
-import { prefersReducedMotion } from "@/lib/utils";
-import { useIsomorphicLayoutEffect } from "@/lib/use-isomorphic-layout-effect";
+import { gsap, prefersReducedMotion, useIsomorphicLayoutEffect } from "@/lib";
 import { PANEL_DURATION_S, PANEL_EASE } from "./menu-overlay.data";
 import {
   IUseMenuOverlayReturn,

@@ -1,8 +1,10 @@
 import { useRef } from "react";
-import { gsap } from "@/lib/gsap";
-import { SplitText } from "@/lib/gsap-split-text";
-import { prefersReducedMotion } from "@/lib/utils";
-import { useIsomorphicLayoutEffect } from "@/lib/use-isomorphic-layout-effect";
+import {
+  gsap,
+  SplitText,
+  prefersReducedMotion,
+  useIsomorphicLayoutEffect,
+} from "@/lib";
 import {
   CHAR_DURATION_S,
   ENTER_STAGGER_AMOUNT_S,

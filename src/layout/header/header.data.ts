@@ -1,5 +1,5 @@
 import { ROUTES } from "@/constants/routes";
-import { INavLink } from "./header.interface";
+import { INavLink } from "@/interfaces";
 
 export const BRAND_HREF = ROUTES.HOME;
 

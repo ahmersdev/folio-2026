@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { gsap } from "@/lib/gsap";
-import { SplitText } from "@/lib/gsap-split-text";
-import { prefersReducedMotion } from "@/lib/utils";
-import { useIsomorphicLayoutEffect } from "@/lib/use-isomorphic-layout-effect";
+import {
+  gsap,
+  SplitText,
+  prefersReducedMotion,
+  useIsomorphicLayoutEffect,
+} from "@/lib";
 import {
   COVER_EXIT_DURATION_S,
   COVER_EXIT_EASE,

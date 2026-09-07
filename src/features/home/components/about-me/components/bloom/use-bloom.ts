@@ -1,8 +1,10 @@
 import { useRef } from "react";
-import { gsap } from "@/lib/gsap";
-import { ScrollTrigger } from "@/lib/gsap-scroll-trigger";
-import { prefersReducedMotion } from "@/lib/utils";
-import { useIsomorphicLayoutEffect } from "@/lib/use-isomorphic-layout-effect";
+import {
+  gsap,
+  ScrollTrigger,
+  prefersReducedMotion,
+  useIsomorphicLayoutEffect,
+} from "@/lib";
 import {
   BLOOM_MATCH_MEDIA_QUERY,
   BLOOM_SCROLL_START,

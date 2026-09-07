@@ -4,7 +4,7 @@ import {
   AboutMeBloomThreeIcon,
   AboutMeBloomTwoIcon,
 } from "@/assets/icons";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib";
 import {
   RING_FOUR_HEIGHT_PCT,
   RING_FOUR_WIDTH_PCT,

@@ -1,6 +1,5 @@
 import { useEffect, useRef, useSyncExternalStore } from "react";
-import { gsap } from "@/lib/gsap";
-import { prefersReducedMotion } from "@/lib/utils";
+import { gsap, prefersReducedMotion } from "@/lib";
 import {
   HOVER_DURATION_S,
   HOVER_EASE,

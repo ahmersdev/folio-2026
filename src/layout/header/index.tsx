@@ -3,9 +3,8 @@
 import Link from "next/link";
 import { BRAND_HREF, NAV_LINKS } from "./header.data";
 import { BRAND_TEXT } from "@/constants";
-import { Hamburger, MenuOverlay, NavLink } from "./components";
+import { Hamburger, MenuOverlay, NavLink, useMenuOverlay } from "./components";
 import useHeader from "./use-header";
-import useMenuOverlay from "./components/menu-overlay/use-menu-overlay";
 
 export default function Header() {
   const { headerRef } = useHeader();

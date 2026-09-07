@@ -5,3 +5,8 @@ export interface ISocialLink {
   href: string;
   Icon: ComponentType<SVGProps<SVGSVGElement>>;
 }
+
+export interface INavLink {
+  label: string;
+  href: string;
+}

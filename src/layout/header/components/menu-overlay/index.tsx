@@ -2,7 +2,7 @@
 
 import { CloseIcon } from "@/assets/icons";
 import { BRAND_TEXT, SOCIAL_LINKS } from "@/constants";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib";
 import {
   CONTACT_EMAIL,
   CONTACT_PHONE,

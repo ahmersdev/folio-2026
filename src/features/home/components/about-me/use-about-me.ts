@@ -1,9 +1,10 @@
 import { useRef } from "react";
-import { gsap } from "@/lib/gsap";
-import "@/lib/gsap-scroll-trigger";
-import { SplitText } from "@/lib/gsap-split-text";
-import { prefersReducedMotion } from "@/lib/utils";
-import { useIsomorphicLayoutEffect } from "@/lib/use-isomorphic-layout-effect";
+import {
+  gsap,
+  SplitText,
+  prefersReducedMotion,
+  useIsomorphicLayoutEffect,
+} from "@/lib";
 import {
   TITLE_REVEAL_OPACITY_FROM,
   TITLE_REVEAL_SCROLL_END,

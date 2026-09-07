@@ -1,8 +1,4 @@
 import { useRef } from "react";
-import { gsap } from "@/lib/gsap";
-import { SplitText } from "@/lib/gsap-split-text";
-import { prefersReducedMotion } from "@/lib/utils";
-import { useIsomorphicLayoutEffect } from "@/lib/use-isomorphic-layout-effect";
 import {
   CHAR_DURATION_S,
   CHAR_EASE,
@@ -20,6 +16,12 @@ import {
   TEXT_COLOR_DURATION_S,
   TEXT_COLOR_EASE,
 } from "./custom-button.data";
+import {
+  gsap,
+  prefersReducedMotion,
+  SplitText,
+  useIsomorphicLayoutEffect,
+} from "@/lib";
 
 export default function useCustomButton() {
   const containerRef = useRef<HTMLAnchorElement>(null);

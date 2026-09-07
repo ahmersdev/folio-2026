@@ -1,4 +1,4 @@
-import { INavLink } from "@/layout/header/header.interface";
+import { INavLink } from "@/interfaces";
 
 export interface IMenuLinkProps extends INavLink {
   onNavigate: () => void;

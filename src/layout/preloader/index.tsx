@@ -1,7 +1,7 @@
 "use client";
 
 import { BRAND_TEXT } from "@/constants";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib";
 import { BORDER_LINE_GAP_PX, BORDER_LINE_HEIGHTS_PX } from "./preloader.data";
 import usePreloader from "./use-preloader";
 

@@ -1,7 +1,5 @@
 import Lenis from "lenis";
-import { gsap } from "@/lib/gsap";
-import { ScrollTrigger } from "@/lib/gsap-scroll-trigger";
-import { useIsomorphicLayoutEffect } from "@/lib/use-isomorphic-layout-effect";
+import { gsap, ScrollTrigger, useIsomorphicLayoutEffect } from "@/lib";
 import { LENIS_LERP, LENIS_WHEEL_MULTIPLIER } from "./smooth-scroll.data";
 
 export default function useSmoothScroll() {

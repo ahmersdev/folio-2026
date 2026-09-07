@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib";
 import { ICustomButton } from "./custom-button.interface";
 import useCustomButton from "./use-custom-button";
 import Link from "next/link";

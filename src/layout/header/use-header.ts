@@ -1,7 +1,5 @@
 import { useRef } from "react";
-import { gsap } from "@/lib/gsap";
-import { prefersReducedMotion } from "@/lib/utils";
-import { useIsomorphicLayoutEffect } from "@/lib/use-isomorphic-layout-effect";
+import { gsap, prefersReducedMotion, useIsomorphicLayoutEffect } from "@/lib";
 import {
   HEADER_DEFAULT_INSET_PX,
   HEADER_DEFAULT_TOP_INSET_PX,
