@@ -18,17 +18,18 @@ export default function NavLink(props: INavLink) {
         className="flex flex-1 items-center justify-start gap-4"
       >
         <span className="size-3 shrink-0 rounded-full border border-white-secondary" />
-        <span className="relative h-5 overflow-clip">
+        <span className="relative h-5 overflow-clip" aria-label={label}>
           <span
             ref={text1Ref}
+            aria-hidden="true"
             className="block h-5 text-[16px] text-white-secondary leading-5"
           >
             {label}
           </span>
           <span
             ref={text2Ref}
-            className="block h-5 text-[16px] text-white-secondary leading-5"
             aria-hidden="true"
+            className="block h-5 text-[16px] text-white-secondary leading-5"
           >
             {label}
           </span>

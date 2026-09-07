@@ -1,3 +1,4 @@
+import { WHATSAPP_PHONE_INTL } from "@/constants";
 import { ROUTES } from "@/constants/routes";
 import { INavLink } from "@/interfaces";
 
@@ -10,7 +11,7 @@ export const PANEL_DURATION_S = 0.8;
 export const PANEL_EASE = "power1.out";
 
 export const CONTACT_EMAIL = "ahmer.dock@gmail.com";
-export const CONTACT_PHONE = "+92 3154806474";
+export const CONTACT_PHONE = WHATSAPP_PHONE_INTL;
 
 // Rotated tagline banner overlapping the brand watermark.
 export const TAGLINE_TEXT = "FULL STACK MIND, SHIPPING HANDS";

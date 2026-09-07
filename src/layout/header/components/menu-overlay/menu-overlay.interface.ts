@@ -11,7 +11,6 @@ export interface IMenuOverlayProps {
 export interface IUseMenuOverlayReturn {
   phase: TMenuOverlayPhase;
   panelRef: RefObject<HTMLDivElement | null>;
-  open: () => void;
   close: () => void;
   toggle: () => void;
 }

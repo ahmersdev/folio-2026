@@ -25,6 +25,7 @@ export default function CustomButton(props: ICustomButton) {
       ref={containerRef}
       href={href}
       target={target}
+      rel={target === "_blank" ? "noreferrer" : undefined}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       className={cn(

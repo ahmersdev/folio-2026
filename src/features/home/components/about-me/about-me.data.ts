@@ -1,3 +1,5 @@
+import { WHATSAPP_LINK } from "@/constants";
+
 export const ABOUT_CAPTION_PREFIX = "Currently ";
 export const ABOUT_CAPTION_EMPHASIS = "(taking)";
 export const ABOUT_CAPTION_SUFFIX = " new Projects";
@@ -5,7 +7,7 @@ export const ABOUT_CAPTION_SUFFIX = " new Projects";
 export const ABOUT_TITLE =
   "IF YOU HAVE AN IDEA THAT NEEDS TO BECOME A REAL PRODUCT AND SOMEONE TO BUILD IT, LET'S TALK";
 export const ABOUT_CTA_LABEL = "WHATSAPP NOW";
-export const ABOUT_CTA_HREF = "https://wa.me/+923154806474";
+export const ABOUT_CTA_HREF = WHATSAPP_LINK;
 
 // Heading reveals word-by-word, tied directly to scroll position (not time) —
 // scrub distance runs from the section entering the bottom of the viewport

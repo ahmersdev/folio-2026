@@ -116,5 +116,5 @@ export default function useMenuOverlay(): IUseMenuOverlayReturn {
     };
   }, [phase]);
 
-  return { phase, panelRef, open, close, toggle };
+  return { phase, panelRef, close, toggle };
 }
