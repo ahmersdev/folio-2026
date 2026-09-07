@@ -42,3 +42,9 @@ export const CHAR_EASE = "power2.out";
 export const NOTCH_SHRINK_DURATION_S = 0.5;
 export const NOTCH_SHRINK_EASE = "back.in";
 export const NOTCH_TRANSLATE_X_PX = 20;
+
+// Matches globals.css's --black-secondary / --white tokens. Passed as
+// literal hex (not the CSS var) since GSAP's color interpolation needs a
+// resolved value, not a custom-property reference.
+export const FILL_COLOR = "#b63331";
+export const DASH_AND_TEXT_HOVER_COLOR = "#fdfdfd";

@@ -2,7 +2,6 @@ import { useEffect, useRef, useSyncExternalStore } from "react";
 import { gsap } from "@/lib/gsap";
 import { prefersReducedMotion } from "@/lib/utils";
 import {
-  COARSE_POINTER_QUERY,
   HOVER_DURATION_S,
   HOVER_EASE,
   HOVER_SCALE,
@@ -10,22 +9,11 @@ import {
   MOVE_DURATION_S,
   MOVE_EASE,
 } from "./custom-cursor.data";
-
-function subscribeToCoarsePointer(onChange: () => void) {
-  const mql = window.matchMedia(COARSE_POINTER_QUERY);
-  mql.addEventListener("change", onChange);
-  return () => mql.removeEventListener("change", onChange);
-}
-
-function getIsCoarsePointer() {
-  return window.matchMedia(COARSE_POINTER_QUERY).matches;
-}
-
-// SSR has no pointer to query — assume coarse (no cursor rendered) until the
-// client subscribes to the real value, avoiding a hydration mismatch.
-function getServerIsCoarsePointer() {
-  return true;
-}
+import {
+  getIsCoarsePointer,
+  getServerIsCoarsePointer,
+  subscribeToCoarsePointer,
+} from "./custom-cursor.utils";
 
 export default function useCustomCursor() {
   const cursorRef = useRef<HTMLDivElement>(null);

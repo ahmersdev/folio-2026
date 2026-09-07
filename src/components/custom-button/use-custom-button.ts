@@ -6,9 +6,11 @@ import { useIsomorphicLayoutEffect } from "@/lib/use-isomorphic-layout-effect";
 import {
   CHAR_DURATION_S,
   CHAR_EASE,
+  DASH_AND_TEXT_HOVER_COLOR,
   DASH_SCALE_DURATION_S,
   DASH_SCALE_EASE,
   DASH_SCALE_X,
+  FILL_COLOR,
   FILL_DURATION_S,
   FILL_EASE,
   NOTCH_SHRINK_DURATION_S,
@@ -18,12 +20,6 @@ import {
   TEXT_COLOR_DURATION_S,
   TEXT_COLOR_EASE,
 } from "./custom-button.data";
-
-// Matches globals.css's --black-secondary / --white tokens. Passed as
-// literal hex (not the CSS var) since GSAP's color interpolation needs a
-// resolved value, not a custom-property reference.
-const FILL_COLOR = "#b63331";
-const DASH_AND_TEXT_HOVER_COLOR = "#fdfdfd";
 
 export default function useCustomButton() {
   const containerRef = useRef<HTMLAnchorElement>(null);
