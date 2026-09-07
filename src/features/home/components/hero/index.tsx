@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { StatBadgeIcon } from "@/assets/icons";
-import { HeroForegroundImg } from "@/assets/images";
+import { HeroForegroundImg, HeroNoiseImg } from "@/assets/images";
 import {
   HERO_DESCRIPTION,
   HERO_STAT,
@@ -96,7 +96,15 @@ export default function Hero() {
         ref={bgRef}
         className="absolute inset-0"
         style={{ background: "var(--gradient-primary)" }}
-      />
+      >
+        <Image
+          src={HeroNoiseImg}
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover"
+        />
+      </div>
 
       <div ref={imageRef} className="pointer-events-none absolute inset-0 z-20">
         <div className="absolute inset-x-0 top-0 lg:top-[clamp(40px,10%,157px)] bottom-0">
