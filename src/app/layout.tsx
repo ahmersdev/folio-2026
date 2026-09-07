@@ -4,6 +4,7 @@ import { Header, Preloader } from "@/layout";
 import "./globals.css";
 import { ReactNode } from "react";
 import CustomCursor from "@/components/custom-cursor";
+import SmoothScroll from "@/components/smooth-scroll";
 
 const bebasNeue = Bebas_Neue({
   variable: "--font-bebas-neue",
@@ -87,6 +88,7 @@ export default function RootLayout({
       className={`${bebasNeue.variable} ${dmSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
+        <SmoothScroll />
         <CustomCursor />
         <Preloader />
         <Header />
