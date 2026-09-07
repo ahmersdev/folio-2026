@@ -1,6 +1,5 @@
 "use client";
 
-import CustomButton from "@/components/custom-button";
 import {
   ABOUT_CAPTION_EMPHASIS,
   ABOUT_CAPTION_PREFIX,
@@ -11,6 +10,7 @@ import {
 } from "./about-me.data";
 import useAboutMe from "./use-about-me";
 import { Bloom } from "./components";
+import { CustomButton } from "@/components";
 
 export default function AboutMe() {
   const { titleRef } = useAboutMe();
