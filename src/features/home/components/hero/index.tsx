@@ -101,6 +101,7 @@ export default function Hero() {
           src={HeroNoiseImg}
           alt=""
           fill
+          loading="eager"
           sizes="(min-width: 0px) 100vw"
           className="object-cover"
         />
