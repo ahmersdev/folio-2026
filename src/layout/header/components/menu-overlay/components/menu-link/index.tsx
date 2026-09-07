@@ -27,14 +27,14 @@ export default function MenuLink(props: IMenuLinkProps) {
         <span className="relative z-10 block" aria-label={label}>
           <span
             ref={text1Ref}
-            aria-hidden="true"
+            aria-hidden
             className="block font-heading font-normal text-(length:--_typography---font-sizes--nav--menu-item) leading-[0.5] tracking-[-0.01em] text-center text-[#808080] uppercase"
           >
             {label}
           </span>
           <span
             ref={text2Ref}
-            aria-hidden="true"
+            aria-hidden
             style={{ top: `${ENTER_REST_TOP_PERCENT}%` }}
             className="absolute inset-x-0 block font-heading font-normal text-(length:--_typography---font-sizes--nav--menu-item) leading-[0.5] tracking-[-0.01em] text-center text-white-secondary uppercase"
           >

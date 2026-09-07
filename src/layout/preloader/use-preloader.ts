@@ -49,6 +49,7 @@ export default function usePreloader() {
     // scroll below. Zeroing every duration/stagger keeps those essential
     // state changes exactly where they are, just without the animated motion.
     const reduceMotion = prefersReducedMotion();
+    const d = (duration: number) => (reduceMotion ? 0 : duration);
 
     const tl = gsap.timeline({
       onComplete: () => setPhase("hidden"),
@@ -56,10 +57,10 @@ export default function usePreloader() {
 
     tl.from(split.chars, {
       yPercent: -100,
-      duration: reduceMotion ? 0 : TEXT_REVEAL_DURATION_S,
-      stagger: reduceMotion ? 0 : TEXT_REVEAL_STAGGER_S,
+      duration: d(TEXT_REVEAL_DURATION_S),
+      stagger: d(TEXT_REVEAL_STAGGER_S),
       ease: TEXT_REVEAL_EASE,
-      delay: reduceMotion ? 0 : TEXT_REVEAL_DELAY_S,
+      delay: d(TEXT_REVEAL_DELAY_S),
     })
       // Whole cover — text included, since it's a child of this element —
       // rides out as one solid block. Text has no exit animation of its own.
@@ -67,11 +68,11 @@ export default function usePreloader() {
         container,
         {
           yPercent: COVER_EXIT_Y_PERCENT,
-          duration: reduceMotion ? 0 : COVER_EXIT_DURATION_S,
+          duration: d(COVER_EXIT_DURATION_S),
           ease: COVER_EXIT_EASE,
           onStart: () => setPhase("exiting"),
         },
-        `+=${reduceMotion ? 0 : HOLD_DURATION_S}`,
+        `+=${d(HOLD_DURATION_S)}`,
       );
 
     return () => {

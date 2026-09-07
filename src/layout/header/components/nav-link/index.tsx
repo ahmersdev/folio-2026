@@ -21,14 +21,14 @@ export default function NavLink(props: INavLink) {
         <span className="relative h-5 overflow-clip" aria-label={label}>
           <span
             ref={text1Ref}
-            aria-hidden="true"
+            aria-hidden
             className="block h-5 text-[16px] text-white-secondary leading-5"
           >
             {label}
           </span>
           <span
             ref={text2Ref}
-            aria-hidden="true"
+            aria-hidden
             className="block h-5 text-[16px] text-white-secondary leading-5"
           >
             {label}

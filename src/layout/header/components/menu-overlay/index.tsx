@@ -1,7 +1,8 @@
 "use client";
 
 import { CloseIcon } from "@/assets/icons";
-import { BRAND_TEXT, SOCIAL_LINKS } from "@/constants";
+import { SocialLinks } from "@/components";
+import { BRAND_TEXT } from "@/constants";
 import { cn } from "@/lib";
 import {
   CONTACT_EMAIL,
@@ -96,18 +97,7 @@ export default function MenuOverlay(props: IMenuOverlayProps) {
             Follow us
           </p>
           <div className="h-px w-5 md:w-10 bg-white-secondary" />
-          {SOCIAL_LINKS.map(({ label, href, Icon }) => (
-            <a
-              key={label}
-              aria-label={label}
-              href={href}
-              target="_blank"
-              rel="noreferrer"
-              className="flex"
-            >
-              <Icon className="size-5 text-white-secondary" />
-            </a>
-          ))}
+          <SocialLinks className="text-white-secondary" />
         </div>
 
         <a

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { StatBadgeIcon } from "@/assets/icons";
 import { HeroForegroundImg, HeroNoiseImg } from "@/assets/images";
+import { SocialLinks } from "@/components";
 import {
   HERO_DESCRIPTION,
   HERO_STAT,
@@ -10,7 +11,6 @@ import {
   HERO_TITLE,
 } from "./hero.data";
 import useHero from "./use-hero";
-import { SOCIAL_LINKS } from "@/constants";
 
 export default function Hero() {
   const {
@@ -60,18 +60,7 @@ export default function Hero() {
           </p>
           <div className="h-px w-10 bg-white-secondary" />
           <div className="flex gap-4">
-            {SOCIAL_LINKS.map(({ label, href, Icon }) => (
-              <a
-                key={label}
-                aria-label={label}
-                href={href}
-                target="_blank"
-                rel="noreferrer"
-                className="flex"
-              >
-                <Icon className="size-5" />
-              </a>
-            ))}
+            <SocialLinks />
           </div>
         </div>
 

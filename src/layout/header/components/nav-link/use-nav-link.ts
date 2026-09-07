@@ -41,6 +41,7 @@ export default function useNavLink() {
     const split2 = SplitText.create(text2, splitConfig);
 
     const reduceMotion = prefersReducedMotion();
+    const d = (duration: number) => (reduceMotion ? 0 : duration);
 
     // Paused, not autoplaying: play() on hover-in. Both copies move at once
     // (same position, 0), matching the reference — the outgoing copy (text1)
@@ -57,8 +58,8 @@ export default function useNavLink() {
       split1.chars,
       {
         y: -LINE_HEIGHT_PX,
-        duration: reduceMotion ? 0 : CHAR_DURATION_S,
-        stagger: { amount: reduceMotion ? 0 : EXIT_STAGGER_AMOUNT_S },
+        duration: d(CHAR_DURATION_S),
+        stagger: { amount: d(EXIT_STAGGER_AMOUNT_S) },
         ease: EASE,
       },
       0,
@@ -66,8 +67,8 @@ export default function useNavLink() {
       split2.chars,
       {
         y: -LINE_HEIGHT_PX,
-        duration: reduceMotion ? 0 : CHAR_DURATION_S,
-        stagger: { amount: reduceMotion ? 0 : ENTER_STAGGER_AMOUNT_S },
+        duration: d(CHAR_DURATION_S),
+        stagger: { amount: d(ENTER_STAGGER_AMOUNT_S) },
         ease: EASE,
       },
       0,

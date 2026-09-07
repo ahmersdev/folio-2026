@@ -1,3 +1,5 @@
+"use client";
+
 import {
   AboutMeBloomFourIcon,
   AboutMeBloomOneIcon,
@@ -18,7 +20,9 @@ import {
 import { IBloomProps } from "./bloom.interface";
 import useBloom from "./use-bloom";
 
-export default function Bloom({ className }: IBloomProps) {
+export default function Bloom(props: IBloomProps) {
+  const { className } = props;
+
   const { containerRef, ringOneRef, ringTwoRef, ringThreeRef, ringFourRef } =
     useBloom();
 

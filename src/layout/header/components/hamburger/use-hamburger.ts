@@ -18,7 +18,7 @@ export default function useHamburger() {
     if (!icon) return;
 
     const sideBars = icon.querySelectorAll('[data-hamburger-bar="side"]');
-    const reduceMotion = prefersReducedMotion();
+    const duration = prefersReducedMotion() ? 0 : DURATION_S;
 
     // No explicit "from" values: the icon's -rotate-45 Tailwind class and the
     // bars' native x/width SVG attributes already are the resting state, so
@@ -33,7 +33,7 @@ export default function useHamburger() {
       icon,
       {
         rotate: ROTATE_TO_DEG,
-        duration: reduceMotion ? 0 : DURATION_S,
+        duration,
         ease: EASE,
       },
       0,
@@ -41,7 +41,7 @@ export default function useHamburger() {
       sideBars,
       {
         attr: { width: BAR_WIDTH_TO_PX, x: BAR_X_TO_PX },
-        duration: reduceMotion ? 0 : DURATION_S,
+        duration,
         ease: EASE,
       },
       0,
