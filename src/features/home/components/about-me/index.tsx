@@ -10,7 +10,7 @@ import {
 } from "./about-me.data";
 import useAboutMe from "./use-about-me";
 import { Bloom } from "./components";
-import { CustomButton } from "@/components";
+import { Caption, CustomButton } from "@/components";
 
 export default function AboutMe() {
   const { titleRef } = useAboutMe();
@@ -19,22 +19,12 @@ export default function AboutMe() {
     <section className="relative overflow-clip px-[5%] py-16 sm:py-20 md:py-28 lg:py-32">
       <div className="mx-auto flex w-full max-w-[1680px] flex-col gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
         <div>
-          <div className="mb-6 flex items-center gap-3">
-            <span
-              className="size-4.5 shrink-0 rounded-full bg-white-secondary
-                md:size-5
-                lg:size-7"
-            />
-            <p
-              className="text-[20px] leading-none font-semibold tracking-tight
-                md:text-[24px]
-                lg:text-[30px]"
-            >
-              {ABOUT_CAPTION_PREFIX}
-              <span className="italic">{ABOUT_CAPTION_EMPHASIS}</span>
-              {ABOUT_CAPTION_SUFFIX}
-            </p>
-          </div>
+          <Caption
+            prefix={ABOUT_CAPTION_PREFIX}
+            emphasis={ABOUT_CAPTION_EMPHASIS}
+            suffix={ABOUT_CAPTION_SUFFIX}
+            className="mb-6"
+          />
 
           <h2
             ref={titleRef}
