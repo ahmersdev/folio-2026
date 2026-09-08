@@ -116,3 +116,7 @@
     display: none !important;
   }
 }
+
+.site-header.is-scrolled {
+  @apply bg-black-secondary/64 backdrop-blur-[200px] rounded-t-xl;
+}

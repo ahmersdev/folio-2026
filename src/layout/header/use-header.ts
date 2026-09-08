@@ -9,6 +9,7 @@ import {
   HEADER_REVEAL_DURATION_S,
   HEADER_REVEAL_EASE,
   HEADER_REVEAL_Y_PERCENT_FROM,
+  HEADER_SCROLLED_CLASS,
   HEADER_SCROLLED_INSET_PX,
   HEADER_SCROLLED_TOP_INSET_PX,
   HEADER_SCROLL_EASE,
@@ -58,6 +59,7 @@ export default function useHeader() {
       const isScrolled = window.scrollY > 0;
       if (isScrolled === scrolled) return;
       scrolled = isScrolled;
+      header.classList.toggle(HEADER_SCROLLED_CLASS, isScrolled);
 
       gsap.to(header, {
         left: isScrolled ? HEADER_SCROLLED_INSET_PX : HEADER_DEFAULT_INSET_PX,

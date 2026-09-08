@@ -3,6 +3,9 @@ import { INavLink } from "@/interfaces";
 
 export const BRAND_HREF = ROUTES.HOME;
 
+export const HEADER_ROOT_CLASS = "site-header";
+export const HEADER_SCROLLED_CLASS = "is-scrolled";
+
 export const HEADER_DEFAULT_INSET_PX = 0;
 export const HEADER_SCROLLED_INSET_PX = 20;
 export const HEADER_DEFAULT_TOP_INSET_PX = 0;
