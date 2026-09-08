@@ -18,12 +18,10 @@ export const TAGLINE_ROTATE_DEG = -15;
 
 // This menu's own nav list — deliberately separate from header.data.ts's
 // NAV_LINKS (the persistent top bar) so this richer, Home-inclusive list
-// doesn't also change the top bar. "Projects" reuses ROUTES.WORKS: same
-// destination as the top bar's "Works" link, just relabeled here.
 export const MENU_NAV_LINKS: INavLink[] = [
   { label: "HOME", href: ROUTES.HOME },
   { label: "ABOUT", href: ROUTES.ABOUT },
-  { label: "PROJECTS", href: ROUTES.WORKS },
+  { label: "PROJECTS", href: ROUTES.PROJECTS },
   { label: "SERVICES", href: ROUTES.SERVICES },
   { label: "CONTACT", href: ROUTES.CONTACT },
 ];

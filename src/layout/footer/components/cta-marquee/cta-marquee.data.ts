@@ -1,8 +1,5 @@
-import { WHATSAPP_LINK } from "@/constants";
-
 export const CTA_TICKER_TEXT = "Let’s Connect And Let’s Work Together";
 export const CTA_LABEL = "Let's Contact";
-export const CTA_HREF = WHATSAPP_LINK;
 
 // Each row renders the phrase twice back-to-back: tweening the track exactly
 // -50%/+50% of its own width (i.e. one full phrase-width) lands it back on a

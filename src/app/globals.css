@@ -92,7 +92,7 @@
      CTA marquee's outlined ticker row (paired with Tailwind's
      text-transparent for the fill) gets one small hand-written rule. */
   .text-stroke {
-    -webkit-text-stroke: 1px var(--black-secondary);
+    -webkit-text-stroke: 1px var(--white-secondary);
   }
 }
 

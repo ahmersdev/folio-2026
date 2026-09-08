@@ -25,7 +25,7 @@ export const HEADER_REVEAL_Y_PERCENT_FROM = -100;
 
 export const NAV_LINKS: INavLink[] = [
   { label: "ABOUT", href: ROUTES.ABOUT },
-  { label: "WORKS", href: ROUTES.WORKS },
+  { label: "PROJECTS", href: ROUTES.PROJECTS },
   { label: "SERVICES", href: ROUTES.SERVICES },
   { label: "CONTACT", href: ROUTES.CONTACT },
 ];

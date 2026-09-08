@@ -3,12 +3,12 @@
 import { ArrowIcon } from "@/assets/icons";
 import { CustomButton } from "@/components";
 import {
-  CTA_HREF,
   CTA_LABEL,
   CTA_TICKER_TEXT,
   TICKER_REPEAT_COUNT,
 } from "./cta-marquee.data";
 import useCtaMarquee from "./use-cta-marquee";
+import { ROUTES } from "@/constants/routes";
 
 const TICKER_COPIES = Array.from({ length: TICKER_REPEAT_COUNT });
 
@@ -16,7 +16,7 @@ export default function CtaMarquee() {
   const { row1Ref, row2Ref } = useCtaMarquee();
 
   return (
-    <section className="relative overflow-clip py-16 text-black-secondary sm:py-20 md:py-28">
+    <section className="relative overflow-clip py-16 text-white-secondary sm:py-20 md:py-28">
       {/* Decorative background typography, not real headings — repeated
           purely so the marquee tween can loop seamlessly. The accessible
           CTA is the button below, so these rows (and their duplicate text)
@@ -50,8 +50,7 @@ export default function CtaMarquee() {
       <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2">
         <CustomButton
           label={CTA_LABEL}
-          href={CTA_HREF}
-          target="_blank"
+          href={ROUTES.CONTACT}
           icon={ArrowIcon}
           filled
           size="lg"
