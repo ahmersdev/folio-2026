@@ -1,5 +1,7 @@
 import { useRef } from "react";
+import { usePathname } from "next/navigation";
 import { gsap, prefersReducedMotion, useIsomorphicLayoutEffect } from "@/lib";
+import { ROUTES } from "@/constants/routes";
 import {
   HEADER_DEFAULT_INSET_PX,
   HEADER_DEFAULT_TOP_INSET_PX,
@@ -15,6 +17,8 @@ import {
 
 export default function useHeader() {
   const headerRef = useRef<HTMLElement>(null);
+  const pathname = usePathname();
+  const isHome = pathname === ROUTES.HOME;
 
   useIsomorphicLayoutEffect(() => {
     const header = headerRef.current;
@@ -29,7 +33,9 @@ export default function useHeader() {
     // approach as the hero/about-me reveals. Under reduced motion the hero
     // shows its final state immediately with no reveal to wait on, so the
     // header should match that and appear in place right away instead of
-    // sliding in after HEADER_REVEAL_DELAY_S.
+    // sliding in after HEADER_REVEAL_DELAY_S. Only the home page runs the
+    // preloader/hero sequence this delay is timed against — everywhere else
+    // there's nothing to wait on, so the header slides in immediately.
     const revealTween = reduceMotion
       ? gsap.set(header, { yPercent: 0 })
       : gsap.fromTo(
@@ -39,7 +45,7 @@ export default function useHeader() {
             yPercent: 0,
             duration: HEADER_REVEAL_DURATION_S,
             ease: HEADER_REVEAL_EASE,
-            delay: HEADER_REVEAL_DELAY_S,
+            delay: isHome ? HEADER_REVEAL_DELAY_S : 0,
           },
         );
 

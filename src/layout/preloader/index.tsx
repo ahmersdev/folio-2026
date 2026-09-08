@@ -1,11 +1,23 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { BRAND_TEXT } from "@/constants";
 import { cn } from "@/lib";
 import { BORDER_LINE_GAP_PX, BORDER_LINE_HEIGHTS_PX } from "./preloader.data";
 import usePreloader from "./use-preloader";
 
 export default function Preloader() {
+  const pathname = usePathname();
+
+  // usePreloader drives side effects (locking scroll, inerting the page)
+  // for as long as it's mounted, so it must not mount at all outside the
+  // home page rather than just being hidden from render.
+  if (pathname !== "/") return null;
+
+  return <PreloaderCover />;
+}
+
+function PreloaderCover() {
   const { containerRef, textRef, phase } = usePreloader();
 
   if (phase === "hidden") return null;
