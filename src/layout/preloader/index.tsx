@@ -5,6 +5,7 @@ import { BRAND_TEXT } from "@/constants";
 import { cn } from "@/lib";
 import { BORDER_LINE_GAP_PX, BORDER_LINE_HEIGHTS_PX } from "./preloader.data";
 import usePreloader from "./use-preloader";
+import { ROUTES } from "@/constants/routes";
 
 export default function Preloader() {
   const pathname = usePathname();
@@ -12,7 +13,7 @@ export default function Preloader() {
   // usePreloader drives side effects (locking scroll, inerting the page)
   // for as long as it's mounted, so it must not mount at all outside the
   // home page rather than just being hidden from render.
-  if (pathname !== "/") return null;
+  if (pathname !== ROUTES.HOME) return null;
 
   return <PreloaderCover />;
 }

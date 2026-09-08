@@ -14,7 +14,7 @@ export default function Header() {
     <>
       <header
         ref={headerRef}
-        className="fixed inset-x-0 top-0 z-99 bg-black-secondary/64 backdrop-blur-[200px] rounded-xl"
+        className="fixed inset-x-0 top-0 z-99 bg-black-secondary/64 backdrop-blur-[200px] rounded-t-xl"
       >
         <nav
           aria-label="Primary"

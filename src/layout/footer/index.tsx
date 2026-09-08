@@ -2,8 +2,8 @@ import { CtaMarquee } from "./components";
 
 export default function Footer() {
   return (
-    <main>
+    <footer>
       <CtaMarquee />
-    </main>
+    </footer>
   );
 }

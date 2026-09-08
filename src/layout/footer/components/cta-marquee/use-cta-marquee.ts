@@ -47,14 +47,25 @@ export default function useCtaMarquee() {
     // Re-derive duration (not the whole tween) on resize, so an in-flight
     // loop's current position is preserved while its speed re-locks to the
     // row's new measured width.
+    //
+    // Coalesced to one rAF per burst: a drag-resize can fire "resize"
+    // several times before the next paint, and each run reads scrollWidth
+    // (forces layout) for both rows — collapsing a burst down to a single
+    // read avoids repeatedly forcing that layout for frames the browser
+    // hasn't even painted yet.
+    let resizeRaf = 0;
     const handleResize = () => {
-      tween1.duration(durationFor(row1));
-      tween2.duration(durationFor(row2));
+      cancelAnimationFrame(resizeRaf);
+      resizeRaf = requestAnimationFrame(() => {
+        tween1.duration(durationFor(row1));
+        tween2.duration(durationFor(row2));
+      });
     };
     window.addEventListener("resize", handleResize);
 
     return () => {
       window.removeEventListener("resize", handleResize);
+      cancelAnimationFrame(resizeRaf);
       tween1.kill();
       tween2.kill();
     };

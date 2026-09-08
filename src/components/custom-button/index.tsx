@@ -143,6 +143,7 @@ export default function CustomButton(props: ICustomButton) {
 
       {Icon && (
         <span
+          aria-hidden
           className={cn(
             "shrink-0 overflow-clip rounded-full bg-black-secondary",
             isLg ? "size-[clamp(28px,4.86vw,70px)]" : "size-8 md:size-9.5",
@@ -163,7 +164,6 @@ export default function CustomButton(props: ICustomButton) {
               />
             </span>
             <span
-              aria-hidden
               className={cn(
                 "flex shrink-0 items-center justify-center",
                 isLg ? "size-[clamp(28px,4.86vw,70px)]" : "size-8 md:size-9.5",

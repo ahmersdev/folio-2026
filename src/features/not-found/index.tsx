@@ -1,3 +1,5 @@
+import Image from "next/image";
+import { NotFoundImg } from "@/assets/images";
 import { Caption, CustomButton } from "@/components";
 import {
   NOT_FOUND_CAPTION_EMPHASIS,
@@ -6,8 +8,6 @@ import {
   NOT_FOUND_CTA_HREF,
   NOT_FOUND_CTA_LABEL,
 } from "./not-found.data";
-import Image from "next/image";
-import { NotFoundImg } from "@/assets/images";
 
 export default function NotFound() {
   return (
@@ -19,7 +19,7 @@ export default function NotFound() {
       />
 
       <div className="max-w-[clamp(260px,42.78vw,616px)]">
-        <Image src={NotFoundImg} alt="404" preload />
+        <Image src={NotFoundImg} alt="Not Found" preload />
       </div>
 
       <CustomButton label={NOT_FOUND_CTA_LABEL} href={NOT_FOUND_CTA_HREF} />
