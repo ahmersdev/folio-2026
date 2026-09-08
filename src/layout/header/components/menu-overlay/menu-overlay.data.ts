@@ -21,7 +21,7 @@ export const TAGLINE_ROTATE_DEG = -15;
 export const MENU_NAV_LINKS: INavLink[] = [
   { label: "HOME", href: ROUTES.HOME },
   { label: "ABOUT", href: ROUTES.ABOUT },
-  { label: "PROJECTS", href: ROUTES.PROJECTS },
+  { label: "WORKS", href: ROUTES.WORKS },
   { label: "SERVICES", href: ROUTES.SERVICES },
   { label: "CONTACT", href: ROUTES.CONTACT },
 ];
