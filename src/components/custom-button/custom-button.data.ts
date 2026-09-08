@@ -45,3 +45,20 @@ export const NOTCH_TRANSLATE_X_PX = 20;
 // resolved value, not a custom-property reference.
 export const FILL_COLOR = "#b63331";
 export const DASH_AND_TEXT_HOVER_COLOR = "#fdfdfd";
+
+// Icon badge swap (only built when an `icon` prop is passed): a horizontal
+// roll — the icon reads as moving "forward" — rather than the text's
+// vertical roll. No reference interaction exists for this (Ariyana's own
+// cta_button hover choreography isn't recoverable from its shipped CSS/JS),
+// so these are authored fresh rather than reverse-engineered.
+export const ICON_ROLL_DURATION_S = 0.35;
+export const ICON_ROLL_EASE = "power2.out";
+
+// Whole-button hover shrink — only built for size="lg" (see
+// ICustomButton.size doc). Ariyana's cta_button visibly shrinks slightly on
+// hover, but (same as the icon roll) that choreography isn't recoverable
+// from its shipped CSS/JS, so the exact scale/timing here is authored
+// fresh, tuned by eye rather than reverse-engineered.
+export const HOVER_SCALE = 0.96;
+export const HOVER_SCALE_DURATION_S = 0.35;
+export const HOVER_SCALE_EASE = "power2.out";

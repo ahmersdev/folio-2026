@@ -30,11 +30,23 @@ export default function GlobalError({
           fontFamily: "sans-serif",
         }}
       >
-        <h1 style={{ fontSize: "1.5rem", fontWeight: 600, margin: 0 }}>
-          Something went wrong
+        <h1
+          style={{
+            fontSize: "clamp(1.25rem, 0.39rem + 4.29vw, 4.25rem)",
+            fontWeight: 600,
+            margin: 0,
+          }}
+        >
+          SOMETHING WENT WRONG
         </h1>
-        <p style={{ maxWidth: "24rem", margin: 0, color: "#a0a0a0" }}>
-          An unexpected error occurred. Please try again.
+        <p
+          style={{
+            fontSize: "clamp(1rem, 0.75rem + 1.25vw, 1.875rem)",
+            maxWidth: "50rem",
+            margin: 0,
+          }}
+        >
+          An unexpected error occurred. Please Try Again.
         </p>
         <button
           type="button"

@@ -87,6 +87,13 @@
   .char-mask {
     overflow-clip-margin: 0.12em;
   }
+
+  /* -webkit-text-stroke has no Tailwind utility equivalent, so the 404
+     CTA marquee's outlined ticker row (paired with Tailwind's
+     text-transparent for the fill) gets one small hand-written rule. */
+  .text-stroke {
+    -webkit-text-stroke: 1px var(--black-secondary);
+  }
 }
 
 .has-custom-cursor {
