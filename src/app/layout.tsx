@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Bebas_Neue, DM_Sans } from "next/font/google";
-import { Header, Preloader } from "@/layout";
+import { Footer, Header, Preloader } from "@/layout";
 import "./globals.css";
 import { ReactNode } from "react";
 import { CustomCursor, SmoothScroll } from "@/components";
@@ -92,6 +92,7 @@ export default function RootLayout({
         <Preloader />
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

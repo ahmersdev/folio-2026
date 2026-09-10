@@ -43,7 +43,7 @@ export default function CustomButton(props: ICustomButton) {
       onBlur={onMouseLeave}
       className={cn(
         "relative inline-flex items-center rounded-full border-2 border-white-secondary",
-        filled ? "bg-rose" : "bg-transparent",
+        filled ? "bg-rose-light" : "bg-transparent",
         isLg
           ? `gap-[clamp(4px,1.39vw,20px)] py-[clamp(8px,1.94vw,28px)]
             pr-[clamp(8px,4.17vw,60px)] pl-[clamp(16px,4.17vw,60px)]`

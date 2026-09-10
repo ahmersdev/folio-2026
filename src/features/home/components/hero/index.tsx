@@ -92,7 +92,7 @@ export default function Hero() {
           fill
           loading="eager"
           sizes="(min-width: 0px) 100vw"
-          className="object-cover"
+          className="object-cover opacity-70"
         />
       </div>
 

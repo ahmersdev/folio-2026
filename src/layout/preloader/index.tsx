@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import { DecorativeLines } from "@/components";
 import { BRAND_TEXT } from "@/constants";
 import { cn } from "@/lib";
 import { BORDER_LINE_GAP_PX, BORDER_LINE_HEIGHTS_PX } from "./preloader.data";
@@ -39,14 +40,11 @@ function PreloaderCover() {
         {BRAND_TEXT}
       </span>
 
-      <div
-        className="absolute inset-x-0 top-full flex flex-col"
-        style={{ gap: BORDER_LINE_GAP_PX }}
-      >
-        {BORDER_LINE_HEIGHTS_PX.map((height, i) => (
-          <div key={i} className="bg-black-secondary" style={{ height }} />
-        ))}
-      </div>
+      <DecorativeLines
+        heights={BORDER_LINE_HEIGHTS_PX}
+        gap={BORDER_LINE_GAP_PX}
+        className="absolute inset-x-0 top-full"
+      />
     </div>
   );
 }
