@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { StatBadgeIcon } from "@/assets/icons";
 import { HeroForegroundImg, HeroNoiseImg } from "@/assets/images";
-import { SocialLinks } from "@/components";
+import { SocialLinks, Subtitle } from "@/components";
 import {
   HERO_DESCRIPTION,
   HERO_STAT,
@@ -36,13 +36,7 @@ export default function Hero() {
       </div>
 
       <div className="relative z-30 w-full px-[6vw] grid grid-cols-1 grid-rows-1 sm:grid-cols-[auto_auto] sm:grid-rows-2 sm:justify-between gap-4">
-        <h2
-          ref={subtitleRef}
-          className="text-[clamp(44px,4.44vw,64px)] leading-none tracking-[-0.0405em]"
-        >
-          {HERO_SUBTITLE_LINES[0]} <br />
-          {HERO_SUBTITLE_LINES[1]}
-        </h2>
+        <Subtitle ref={subtitleRef} lines={HERO_SUBTITLE_LINES} />
 
         <p
           ref={descriptionRef}
@@ -55,13 +49,7 @@ export default function Hero() {
           ref={socialLinksRef}
           className="order-2 sm:order-0 flex items-center gap-3"
         >
-          <p className="text-[clamp(16px,1.39vw,20px)] font-medium leading-normal">
-            Reach via
-          </p>
-          <div className="h-px w-10 bg-white-secondary" />
-          <div className="flex gap-4">
-            <SocialLinks />
-          </div>
+          <SocialLinks />
         </div>
 
         <div

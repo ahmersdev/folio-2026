@@ -93,12 +93,8 @@ export default function MenuOverlay(props: IMenuOverlayProps) {
           {CONTACT_EMAIL}
         </a>
 
-        <div className="flex items-center gap-3">
-          <p className="font-sans font-bold text-(length:--_typography---font-sizes--body--md) leading-normal tracking-normal text-white">
-            Follow us
-          </p>
-          <div className="h-px w-5 md:w-10 bg-white-secondary" />
-          <SocialLinks className="text-white-secondary" />
+        <div className="flex items-center gap-2 md:gap-3">
+          <SocialLinks label="Follow us" labelClassName="font-bold" />
         </div>
 
         <a

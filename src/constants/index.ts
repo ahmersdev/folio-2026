@@ -1,7 +1,8 @@
 import { LinkedinIcon, WhatsappIcon } from "@/assets/icons";
 import { ISocialLink } from "@/interfaces";
 
-export const BRAND_TEXT = "// AHMERDOCK";
+export const BRAND_NAME = "AHMERDOCK";
+export const BRAND_TEXT = `// ${BRAND_NAME}`;
 
 // Single source for the WhatsApp number — the wa.me link (social icon, about
 // CTA) and the display/tel: format (menu contact bar) both derive from this

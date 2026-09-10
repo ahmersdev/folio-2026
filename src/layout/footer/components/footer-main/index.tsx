@@ -1,5 +1,6 @@
 import { DecorativeLines } from "@/components";
 import { FOOTER_LINE_GAP_PX, FOOTER_LINE_HEIGHTS_PX } from "./footer-main.data";
+import { BottomBar, TitleBar } from "./components";
 
 export default function FooterMain() {
   return (
@@ -10,7 +11,10 @@ export default function FooterMain() {
         className="w-full"
       />
 
-      <div className="mt-1 bg-jet-black">FooterMain</div>
+      <div className="mt-1 bg-jet-black px-[5%] pt-[clamp(64px,calc(12.8vw-34.25px),150px)]">
+        <TitleBar />
+        <BottomBar />
+      </div>
     </section>
   );
 }
