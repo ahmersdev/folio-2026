@@ -29,7 +29,7 @@ export default function CtaMarquee() {
         {TICKER_COPIES.map((_, i) => (
           <h2
             key={i}
-            className="mr-[clamp(1.25rem,3vw,2.5rem)] text-[clamp(3rem,0.6942rem+9.8382vw,12.5rem)] leading-none uppercase"
+            className="mr-(--marquee-gap) text-(length:--marquee-text-size) leading-none uppercase"
           >
             {CTA_TICKER_TEXT}
           </h2>
@@ -40,7 +40,7 @@ export default function CtaMarquee() {
         {TICKER_COPIES.map((_, i) => (
           <h2
             key={i}
-            className="text-stroke mr-[clamp(1.25rem,3vw,2.5rem)] text-[clamp(3rem,0.6942rem+9.8382vw,12.5rem)] leading-none text-transparent uppercase"
+            className="text-stroke mr-(--marquee-gap) text-(length:--marquee-text-size) leading-none text-transparent uppercase"
           >
             {CTA_TICKER_TEXT}
           </h2>

@@ -48,7 +48,7 @@ export default function MenuOverlay(props: IMenuOverlayProps) {
               backgroundClip: "text",
               color: "transparent",
             }}
-            className="pointer-events-none relative font-heading font-normal text-[clamp(3.75rem,calc(16.83vw-0.19375rem),14.95rem)] leading-[0.8] tracking-[-0.03em] text-center whitespace-nowrap opacity-30 pt-15 md:pt-11 lg:pt-0"
+            className="pointer-events-none relative font-heading font-normal text-(length:--brand-text-size) leading-[0.8] tracking-[-0.03em] text-center whitespace-nowrap opacity-30 pt-15 md:pt-11 lg:pt-0"
           >
             {BRAND_TEXT}
           </p>
