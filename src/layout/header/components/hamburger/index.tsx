@@ -23,7 +23,7 @@ export default function Hamburger(props: IHamburgerProps) {
     >
       <HamburgerIcon
         ref={iconRef}
-        className="h-[clamp(21px,calc(0.129vw+21px),22px)] w-[clamp(21px,calc(0.188vw+21px),32px)] -rotate-45 text-white-secondary"
+        className="h-[clamp(1.3125rem,calc(0.129vw+1.3125rem),1.375rem)] w-[clamp(1.3125rem,calc(0.188vw+1.3125rem),2rem)] -rotate-45 text-white-secondary"
       />
     </button>
   );

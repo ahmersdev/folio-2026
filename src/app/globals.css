@@ -49,14 +49,14 @@
     5.25rem
   );
   --_typography---font-sizes--nav--menu-item: clamp(
-    32px,
-    calc(3.36vw + 19.39px),
-    67.8px
+    2rem,
+    calc(3.36vw + 1.211875rem),
+    4.2375rem
   );
   --_typography---font-sizes--body--md: clamp(
-    16px,
-    calc(0.376vw + 14.59px),
-    20px
+    1rem,
+    calc(0.376vw + 0.911875rem),
+    1.25rem
   );
 }
 

@@ -12,7 +12,7 @@ export default function Subtitle(props: ISubtitleProps) {
     <h2
       ref={ref}
       className={cn(
-        "text-[clamp(44px,4.44vw,64px)] leading-none tracking-[-0.0405em] text-white-secondary",
+        "text-[clamp(2.75rem,4.44vw,4rem)] leading-none tracking-[-0.0405em] text-white-secondary",
         className,
       )}
     >

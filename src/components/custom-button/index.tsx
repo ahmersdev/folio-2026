@@ -45,8 +45,8 @@ export default function CustomButton(props: ICustomButton) {
         "relative inline-flex items-center rounded-full border-2 border-white-secondary",
         filled ? "bg-rose-light" : "bg-transparent",
         isLg
-          ? `gap-[clamp(4px,1.39vw,20px)] py-[clamp(8px,1.94vw,28px)]
-            pr-[clamp(8px,4.17vw,60px)] pl-[clamp(16px,4.17vw,60px)]`
+          ? `gap-[clamp(0.25rem,1.39vw,1.25rem)] py-[clamp(0.5rem,1.94vw,1.75rem)]
+            pr-[clamp(0.5rem,4.17vw,3.75rem)] pl-[clamp(1rem,4.17vw,3.75rem)]`
           : `gap-3 py-4 px-5.5
             md:px-7.5
             lg:py-5.75 lg:px-10`,
@@ -65,7 +65,7 @@ export default function CustomButton(props: ICustomButton) {
         className={cn(
           "absolute -top-0.5 h-0.5 rounded-full bg-background",
           isLg
-            ? "left-[clamp(16px,4.17vw,60px)] w-[clamp(20px,3.33vw,48px)]"
+            ? "left-[clamp(1rem,4.17vw,3.75rem)] w-[clamp(1.25rem,3.33vw,3rem)]"
             : `left-5.5 w-5
               md:left-7.5
               lg:left-10
@@ -78,7 +78,7 @@ export default function CustomButton(props: ICustomButton) {
         className={cn(
           "absolute -bottom-0.5 h-0.5 rounded-full bg-background",
           isLg
-            ? "right-[clamp(46px,7.64vw,110px)] w-[clamp(20px,3.33vw,48px)]"
+            ? "right-[clamp(2.875rem,7.64vw,6.875rem)] w-[clamp(1.25rem,3.33vw,3rem)]"
             : `right-5.5 w-5
               md:right-7.5
               lg:right-10
@@ -91,7 +91,7 @@ export default function CustomButton(props: ICustomButton) {
         className={cn(
           "absolute -bottom-0.5 h-0.5 rounded-full bg-background",
           isLg
-            ? "right-[clamp(30px,4.86vw,70px)] w-[clamp(12px,2.08vw,30px)]"
+            ? "right-[clamp(1.875rem,4.86vw,4.375rem)] w-[clamp(0.75rem,2.08vw,1.875rem)]"
             : `right-14.5 w-2.5
               md:right-16.5
               lg:right-19`,
@@ -105,7 +105,7 @@ export default function CustomButton(props: ICustomButton) {
           ref={dashRef}
           className={cn(
             "h-0.5 shrink-0 rounded-full bg-white-secondary",
-            isLg ? "w-[clamp(20px,3.33vw,48px)]" : "w-5 sm:w-6.25",
+            isLg ? "w-[clamp(1.25rem,3.33vw,3rem)]" : "w-5 sm:w-6.25",
           )}
         />
       )}
@@ -113,7 +113,7 @@ export default function CustomButton(props: ICustomButton) {
       <span
         className={cn(
           "relative block overflow-clip",
-          isLg ? "h-[clamp(22px,4.17vw,60px)]" : "h-5 md:h-6",
+          isLg ? "h-[clamp(1.375rem,4.17vw,3.75rem)]" : "h-5 md:h-6",
         )}
       >
         <span
@@ -121,7 +121,7 @@ export default function CustomButton(props: ICustomButton) {
           className={cn(
             "block font-heading text-white-secondary",
             isLg
-              ? "text-[clamp(22px,4.17vw,60px)] leading-none"
+              ? "text-[clamp(1.375rem,4.17vw,3.75rem)] leading-none"
               : "text-[20px] leading-5 md:text-[24px] md:leading-6",
           )}
         >
@@ -133,7 +133,7 @@ export default function CustomButton(props: ICustomButton) {
           className={cn(
             "block font-heading text-white-secondary",
             isLg
-              ? "text-[clamp(22px,4.17vw,60px)] leading-none"
+              ? "text-[clamp(1.375rem,4.17vw,3.75rem)] leading-none"
               : "text-[20px] leading-5 md:text-[24px] md:leading-6",
           )}
         >
@@ -146,33 +146,39 @@ export default function CustomButton(props: ICustomButton) {
           aria-hidden
           className={cn(
             "shrink-0 overflow-clip rounded-full bg-black-secondary",
-            isLg ? "size-[clamp(28px,4.86vw,70px)]" : "size-8 md:size-9.5",
+            isLg
+              ? "size-[clamp(1.75rem,4.86vw,4.375rem)]"
+              : "size-8 md:size-9.5",
           )}
         >
           <span ref={iconRowRef} className="flex">
             <span
               className={cn(
                 "flex shrink-0 items-center justify-center",
-                isLg ? "size-[clamp(28px,4.86vw,70px)]" : "size-8 md:size-9.5",
+                isLg
+                  ? "size-[clamp(1.75rem,4.86vw,4.375rem)]"
+                  : "size-8 md:size-9.5",
               )}
             >
               <Icon
                 className={cn(
                   "text-white-secondary",
-                  isLg ? "size-[clamp(12px,2.22vw,32px)]" : "size-4",
+                  isLg ? "size-[clamp(0.75rem,2.22vw,2rem)]" : "size-4",
                 )}
               />
             </span>
             <span
               className={cn(
                 "flex shrink-0 items-center justify-center",
-                isLg ? "size-[clamp(28px,4.86vw,70px)]" : "size-8 md:size-9.5",
+                isLg
+                  ? "size-[clamp(1.75rem,4.86vw,4.375rem)]"
+                  : "size-8 md:size-9.5",
               )}
             >
               <Icon
                 className={cn(
                   "text-white-secondary",
-                  isLg ? "size-[clamp(12px,2.22vw,32px)]" : "size-4",
+                  isLg ? "size-[clamp(0.75rem,2.22vw,2rem)]" : "size-4",
                 )}
               />
             </span>

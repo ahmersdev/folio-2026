@@ -48,7 +48,7 @@ export default function MenuOverlay(props: IMenuOverlayProps) {
               backgroundClip: "text",
               color: "transparent",
             }}
-            className="pointer-events-none relative font-heading font-normal text-[clamp(60px,calc(16.83vw-3.1px),239.2px)] leading-[0.8] tracking-[-0.03em] text-center whitespace-nowrap opacity-30 pt-15 md:pt-11 lg:pt-0"
+            className="pointer-events-none relative font-heading font-normal text-[clamp(3.75rem,calc(16.83vw-0.19375rem),14.95rem)] leading-[0.8] tracking-[-0.03em] text-center whitespace-nowrap opacity-30 pt-15 md:pt-11 lg:pt-0"
           >
             {BRAND_TEXT}
           </p>
@@ -56,9 +56,9 @@ export default function MenuOverlay(props: IMenuOverlayProps) {
             style={{
               transform: `translate(-50%, -50%) rotate(${TAGLINE_ROTATE_DEG}deg)`,
             }}
-            className="pointer-events-none absolute top-1/2 left-1/2 hidden bg-rose px-[clamp(12px,calc(1.19vw+18.86px),36px)] py-[clamp(16px,calc(0.595vw+11.43px),20px)] md:block"
+            className="pointer-events-none absolute top-1/2 left-1/2 hidden bg-rose px-[clamp(0.75rem,calc(1.19vw+1.17875rem),2.25rem)] py-[clamp(1rem,calc(0.595vw+0.714375rem),1.25rem)] md:block"
           >
-            <span className="font-heading font-normal text-[clamp(28px,calc(1.04vw+20px),35px)] leading-[0.8] tracking-[-0.01em] whitespace-nowrap text-black-secondary uppercase">
+            <span className="font-heading font-normal text-[clamp(1.75rem,calc(1.04vw+1.25rem),2.1875rem)] leading-[0.8] tracking-[-0.01em] whitespace-nowrap text-black-secondary uppercase">
               {TAGLINE_TEXT}
             </span>
           </div>
@@ -67,9 +67,9 @@ export default function MenuOverlay(props: IMenuOverlayProps) {
             data-menu-close=""
             aria-label="Close menu"
             onClick={onClose}
-            className="absolute top-4 right-4 md:top-8 md:right-8 z-10 flex size-[clamp(48px,calc(3.19vw+36.03px),82px)] items-center justify-center rounded-[clamp(12px,calc(0.75vw+9.18px),20px)] border border-white/30 bg-black-secondary"
+            className="absolute top-4 right-4 md:top-8 md:right-8 z-10 flex size-[clamp(3rem,calc(3.19vw+2.251875rem),5.125rem)] items-center justify-center rounded-[clamp(0.75rem,calc(0.75vw+0.57375rem),1.25rem)] border border-white/30 bg-black-secondary"
           >
-            <CloseIcon className="size-[clamp(24px,calc(1.69vw+17.66px),42px)] text-white-secondary" />
+            <CloseIcon className="size-[clamp(1.5rem,calc(1.69vw+1.10375rem),2.625rem)] text-white-secondary" />
           </button>
         </div>
 

@@ -11,7 +11,7 @@ export default function FooterMain() {
         className="w-full"
       />
 
-      <div className="mt-1 bg-jet-black px-[5%] pt-[clamp(64px,calc(12.8vw-34.25px),150px)]">
+      <div className="mt-1 bg-jet-black px-[5%] pt-[clamp(4rem,calc(12.8vw-2.140625rem),9.375rem)]">
         <TitleBar />
         <BottomBar />
       </div>
