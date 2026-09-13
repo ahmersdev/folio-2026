@@ -1,5 +1,5 @@
+import { MENU_NAV_LINKS } from "@/constants";
 import { ROUTES } from "@/constants/routes";
-import { INavLink } from "@/interfaces";
 
 export const BRAND_HREF = ROUTES.HOME;
 
@@ -23,9 +23,9 @@ export const HEADER_REVEAL_DURATION_S = 0.5;
 export const HEADER_REVEAL_EASE = "power1.out";
 export const HEADER_REVEAL_Y_PERCENT_FROM = -100;
 
-export const NAV_LINKS: INavLink[] = [
-  { label: "ABOUT", href: ROUTES.ABOUT },
-  { label: "WORKS", href: ROUTES.WORKS },
-  { label: "SERVICES", href: ROUTES.SERVICES },
-  { label: "CONTACT", href: ROUTES.CONTACT },
-];
+// Desktop nav omits Home — the brand mark already links there (see
+// BRAND_HREF above), so it's the same route list the mobile/footer menu
+// uses (MENU_NAV_LINKS) minus that one entry, not a second copy of it.
+export const NAV_LINKS = MENU_NAV_LINKS.filter(
+  (link) => link.href !== ROUTES.HOME,
+);

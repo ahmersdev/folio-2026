@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-gray: var(--gray);
   --color-black-secondary: var(--black-secondary);
   --color-background: var(--background);
   --color-primary: var(--primary);
@@ -18,7 +17,6 @@
 }
 
 :root {
-  --gray: #383838;
   --black-secondary: #121212;
   --background: #0d0c0c;
   --primary: #b63331;

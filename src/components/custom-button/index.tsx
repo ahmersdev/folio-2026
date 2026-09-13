@@ -17,6 +17,13 @@ export default function CustomButton(props: ICustomButton) {
   } = props;
 
   const isLg = size === "lg";
+  const labelSizeClass = isLg
+    ? "text-(length:--button-lg-content-size) leading-none"
+    : "text-[20px] leading-5 md:text-[24px] md:leading-6";
+  const iconSlotSizeClass = isLg
+    ? "size-(--button-lg-icon-box)"
+    : "size-8 md:size-9.5";
+  const iconSizeClass = isLg ? "size-(--button-lg-icon-size)" : "size-4";
 
   const {
     containerRef,
@@ -120,9 +127,7 @@ export default function CustomButton(props: ICustomButton) {
           ref={text1Ref}
           className={cn(
             "block font-heading text-white-secondary",
-            isLg
-              ? "text-(length:--button-lg-content-size) leading-none"
-              : "text-[20px] leading-5 md:text-[24px] md:leading-6",
+            labelSizeClass,
           )}
         >
           {label}
@@ -132,9 +137,7 @@ export default function CustomButton(props: ICustomButton) {
           aria-hidden
           className={cn(
             "block font-heading text-white-secondary",
-            isLg
-              ? "text-(length:--button-lg-content-size) leading-none"
-              : "text-[20px] leading-5 md:text-[24px] md:leading-6",
+            labelSizeClass,
           )}
         >
           {label}
@@ -146,35 +149,25 @@ export default function CustomButton(props: ICustomButton) {
           aria-hidden
           className={cn(
             "shrink-0 overflow-clip rounded-full bg-black-secondary",
-            isLg ? "size-(--button-lg-icon-box)" : "size-8 md:size-9.5",
+            iconSlotSizeClass,
           )}
         >
           <span ref={iconRowRef} className="flex">
             <span
               className={cn(
                 "flex shrink-0 items-center justify-center",
-                isLg ? "size-(--button-lg-icon-box)" : "size-8 md:size-9.5",
+                iconSlotSizeClass,
               )}
             >
-              <Icon
-                className={cn(
-                  "text-white-secondary",
-                  isLg ? "size-(--button-lg-icon-size)" : "size-4",
-                )}
-              />
+              <Icon className={cn("text-white-secondary", iconSizeClass)} />
             </span>
             <span
               className={cn(
                 "flex shrink-0 items-center justify-center",
-                isLg ? "size-(--button-lg-icon-box)" : "size-8 md:size-9.5",
+                iconSlotSizeClass,
               )}
             >
-              <Icon
-                className={cn(
-                  "text-white-secondary",
-                  isLg ? "size-(--button-lg-icon-size)" : "size-4",
-                )}
-              />
+              <Icon className={cn("text-white-secondary", iconSizeClass)} />
             </span>
           </span>
         </span>
