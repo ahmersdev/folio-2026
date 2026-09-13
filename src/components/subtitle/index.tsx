@@ -17,7 +17,7 @@ export default function Subtitle(props: ISubtitleProps) {
       )}
     >
       {lines.map((line, index) => (
-        <Fragment key={line}>
+        <Fragment key={index}>
           {index > 0 && <br />}
           {line}
         </Fragment>

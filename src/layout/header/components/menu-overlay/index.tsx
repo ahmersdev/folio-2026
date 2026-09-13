@@ -21,6 +21,9 @@ export default function MenuOverlay(props: IMenuOverlayProps) {
   return (
     <div
       ref={panelRef}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Site menu"
       aria-hidden={!isVisible}
       inert={phase === "closed" ? true : undefined}
       // `phase` starts as "closed" on both the server and the initial client

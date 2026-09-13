@@ -52,6 +52,7 @@ export default function Hero() {
           className="order-1 sm:order-0 flex items-center gap-4"
         >
           <StatBadgeIcon
+            aria-hidden
             className="h-[clamp(3.25rem,calc(2.5vw+1.5rem),3.75rem)]
               w-[clamp(2.673125rem,calc(2.056vw+1.23375rem),3.084375rem)]"
           />

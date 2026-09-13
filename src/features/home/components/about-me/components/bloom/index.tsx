@@ -29,6 +29,7 @@ export default function Bloom(props: IBloomProps) {
   return (
     <div
       ref={containerRef}
+      aria-hidden
       className={cn("relative aspect-309/324", className)}
     >
       {/* Four → One in markup order: later siblings paint on top with no

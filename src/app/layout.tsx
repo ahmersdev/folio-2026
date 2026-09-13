@@ -72,7 +72,8 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
+  // No maximumScale: capping it (esp. at 1) blocks pinch-to-zoom, which
+  // fails WCAG 1.4.4 (Resize Text) for anyone who needs to zoom in.
   colorScheme: "dark",
   themeColor: "#B63331",
 };

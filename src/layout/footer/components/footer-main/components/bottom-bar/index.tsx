@@ -4,6 +4,7 @@ export default function BottomBar() {
   return (
     <div className="mx-auto flex flex-col items-center gap-6 pb-10 lg:flex-row lg:items-end lg:justify-between">
       <p
+        aria-hidden
         style={{
           background: "var(--gradient-heading)",
           WebkitBackgroundClip: "text",
