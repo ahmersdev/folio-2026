@@ -67,7 +67,7 @@ export default function MenuLink(props: IMenuLinkProps) {
           <span className="relative z-10 block" aria-hidden>
             <span
               ref={indexText1Ref}
-              className="block font-heading font-normal text-(length:--_typography---font-sizes--nav--menu-item-index) leading-[0.8076] tracking-[-0.0162em] text-transparent uppercase [-webkit-text-stroke:1px_#808080]"
+              className="block font-heading font-normal text-(length:--_typography---font-sizes--nav--menu-item-index) leading-[0.8076] tracking-[-0.0162em] text-transparent uppercase nav-text-stroke"
             >
               {formattedIndex}
             </span>

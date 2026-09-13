@@ -4,7 +4,6 @@ export const HERO_TITLE = "AHMER DOCK";
 // Hardcoded line break (not left to max-width auto-wrap): the two lines
 // combined sit right at the edge of the container width, so a font-metrics
 // hair's-breadth difference between font builds can tip it onto a 3rd line.
-export const HERO_SUBTITLE_LINES = ["BUILT-TO-SHIP", "FULL STACK DEV"];
 export const HERO_DESCRIPTION =
   "A FULL STACK DEVELOPER WHO TAKES PRODUCTS FROM IDEA TO LAUNCH, BUILDING THE FRONTEND, BACKEND, AND EVERYTHING IN BETWEEN.";
 

@@ -11,6 +11,7 @@
   --color-transparent: var(--transparent);
   --color-white: var(--white);
   --color-white-secondary: var(--white-secondary);
+  --color-stroke: var(--stroke);
   --font-sans: var(--font-dm-sans);
   --font-heading: var(--font-bebas-neue);
   --background-image-wipe: var(--gradient-wipe);
@@ -27,6 +28,7 @@
   --transparent: #fff0;
   --white: #fff;
   --white-secondary: #fdfdfd;
+  --stroke: #808080;
   --gradient-primary: radial-gradient(
     50% 50% at 50% 50%,
     var(--primary) 0%,
@@ -108,6 +110,10 @@
      text-transparent for the fill) gets one small hand-written rule. */
   .text-stroke {
     -webkit-text-stroke: 1px var(--white-secondary);
+  }
+
+  .nav-text-stroke {
+    -webkit-text-stroke: 1px var(--stroke);
   }
 }
 

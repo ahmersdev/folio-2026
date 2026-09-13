@@ -14,7 +14,7 @@ export default function FooterMain() {
 
       <div className="mt-1 bg-jet-black px-[5%] pt-[clamp(4rem,calc(12.8vw-2.140625rem),9.375rem)]">
         <TitleBar />
-        <ul className="flex flex-col">
+        <ul className="flex flex-col pt-12 pb-[clamp(4rem,calc(14.5833vw-3rem),10.125rem)]">
           {MENU_NAV_LINKS.map(({ label, href }, index) => (
             <MenuLink key={label} label={label} href={href} index={index} />
           ))}

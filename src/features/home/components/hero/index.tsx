@@ -4,12 +4,7 @@ import Image from "next/image";
 import { StatBadgeIcon } from "@/assets/icons";
 import { HeroForegroundImg, HeroNoiseImg } from "@/assets/images";
 import { SocialLinks, Subtitle } from "@/components";
-import {
-  HERO_DESCRIPTION,
-  HERO_STAT,
-  HERO_SUBTITLE_LINES,
-  HERO_TITLE,
-} from "./hero.data";
+import { HERO_DESCRIPTION, HERO_STAT, HERO_TITLE } from "./hero.data";
 import useHero from "./use-hero";
 
 export default function Hero() {
@@ -36,7 +31,7 @@ export default function Hero() {
       </div>
 
       <div className="relative z-30 w-full px-[6vw] grid grid-cols-1 grid-rows-1 sm:grid-cols-[auto_auto] sm:grid-rows-2 sm:justify-between gap-4">
-        <Subtitle ref={subtitleRef} lines={HERO_SUBTITLE_LINES} />
+        <Subtitle ref={subtitleRef} />
 
         <p
           ref={descriptionRef}
