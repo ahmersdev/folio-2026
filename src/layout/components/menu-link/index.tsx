@@ -6,7 +6,7 @@ import useMenuLink from "./use-menu-link";
 import { IMenuLinkProps } from "./menu-link.interface";
 
 export default function MenuLink(props: IMenuLinkProps) {
-  const { label, href, onNavigate } = props;
+  const { label, href, index, onNavigate } = props;
 
   const { wipeRef, text1Ref, text2Ref, onMouseEnter, onMouseLeave } =
     useMenuLink();
