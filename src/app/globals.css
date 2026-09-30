@@ -63,6 +63,13 @@
     calc(0.376vw + 0.911875rem),
     1.25rem
   );
+  --progress-year-base: clamp(5rem, 1.3592rem + 15.534vw, 20rem);
+  --_typography---font-sizes--heading--progress-year: var(--progress-year-base);
+  --_typography---font-sizes--body--badge: clamp(
+    1.5rem,
+    1.2573rem + 1.0356vw,
+    2.5rem
+  );
   --button-lg-edge-x: clamp(1rem, 4.17vw, 3.75rem);
   --button-lg-notch-w: clamp(1.25rem, 3.33vw, 3rem);
   --button-lg-content-size: clamp(1.375rem, 4.17vw, 3.75rem);
@@ -71,6 +78,101 @@
   --brand-text-size: clamp(3.75rem, calc(16.83vw - 0.19375rem), 14.95rem);
   --marquee-gap: clamp(1.25rem, 3vw, 2.5rem);
   --marquee-text-size: clamp(3rem, 0.6942rem + 9.8382vw, 12.5rem);
+
+  /* Progress section — stepped tiers measured from the reference (Webflow
+     breakpoints 1439 / 991 / 767 / 479; 1920+ only moves the badge). */
+  --progress-col: 480px;
+  --progress-gap: 200px;
+  --progress-start: 640px;
+  --progress-year-gap: 32px;
+  --progress-year-mb: 24px;
+  --progress-dash-w: 78px;
+  --progress-dash-h: 8px;
+  --progress-text-size: 20px;
+  --progress-text-lh: 30px;
+  --progress-text-mt: 40px;
+  --progress-text-mb: 52px;
+  --progress-img-h: clamp(
+    180px,
+    calc(
+      100dvh - var(--_typography---font-sizes--heading--progress-year) - 285px
+    ),
+    300px
+  );
+  --progress-img-radius: 40px;
+  --progress-badge-top: 55px;
+  --progress-badge-right: 154px;
+  --progress-badge-px: 24px;
+  --progress-badge-py: 16px;
+}
+
+/* Short-laptop guard (desktop tiers only, the reference has none): cap the
+   year at 30% of the screen height so year + badge never spill off-screen. */
+@media (min-width: 992px) {
+  :root {
+    --_typography---font-sizes--heading--progress-year: min(
+      var(--progress-year-base),
+      30dvh
+    );
+  }
+}
+
+@media (min-width: 1920px) {
+  :root {
+    --progress-badge-top: 86px;
+    --progress-badge-right: 199px;
+  }
+}
+
+@media (max-width: 1439px) {
+  :root {
+    --progress-gap: 120px;
+  }
+}
+
+@media (max-width: 991px) {
+  :root {
+    --progress-col: 300px;
+    --progress-gap: 64px;
+    --progress-start: 148px;
+    --progress-year-gap: 20px;
+    --progress-year-mb: 20px;
+    --progress-dash-w: 50px;
+    --progress-text-size: 16px;
+    --progress-text-lh: 24px;
+    --progress-text-mt: 24px;
+    --progress-text-mb: 32px;
+    --progress-img-h: 187.5px;
+    --progress-img-radius: 24px;
+    --progress-badge-top: 36px;
+    --progress-badge-right: 131px;
+    --progress-badge-px: 16px;
+    --progress-badge-py: 12px;
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --progress-gap: 48px;
+    --progress-start: 137px;
+    --progress-year-mb: 16px;
+    --progress-dash-w: 40px;
+    --progress-text-mt: 20px;
+    --progress-text-mb: 24px;
+    --progress-img-radius: 20px;
+    --progress-badge-top: 26px;
+    --progress-badge-right: 86px;
+  }
+}
+
+@media (max-width: 479px) {
+  :root {
+    --progress-gap: 32px;
+    --progress-year-gap: 16px;
+    --progress-dash-w: 30px;
+    --progress-dash-h: 6px;
+    --progress-img-radius: 16px;
+  }
 }
 
 @layer base {
