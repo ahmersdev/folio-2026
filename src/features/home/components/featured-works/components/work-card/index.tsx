@@ -4,10 +4,7 @@ import { CustomButton } from "@/components";
 import { cn } from "@/lib";
 import { WORKS_CTA_LABEL } from "../../featured-works.data";
 import { IWorkCardProps } from "./work-card.interface";
-
-// Radius token from the reference: 12px, 16px from 480, 20px from 992.
-const RADIUS_CLASS =
-  "rounded-xl min-[480px]:rounded-2xl min-[992px]:rounded-[20px]";
+import { RADIUS_CLASS } from "./work-card.data";
 
 export default function WorkCard(props: IWorkCardProps) {
   const { work, index, total } = props;
