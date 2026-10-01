@@ -6,3 +6,7 @@ export { default as Progress2023Img } from "./progress-2023-img.jpg";
 export { default as Progress2024Img } from "./progress-2024-img.jpg";
 export { default as Progress2025Img } from "./progress-2025-img.jpg";
 export { default as Progress2026Img } from "./progress-2026-img.jpg";
+export { default as FeaturedWork1Img } from "./featured-work-1-img.jpg";
+export { default as FeaturedWork2Img } from "./featured-work-2-img.jpg";
+export { default as FeaturedWork3Img } from "./featured-work-3-img.jpg";
+export { default as FeaturedWork4Img } from "./featured-work-4-img.jpg";
