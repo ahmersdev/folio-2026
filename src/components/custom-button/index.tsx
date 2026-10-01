@@ -14,7 +14,26 @@ export default function CustomButton(props: ICustomButton) {
     icon: Icon,
     filled = false,
     size = "default",
+    notchColor,
+    borderColor,
   } = props;
+
+  // White unless overridden; the class is dropped (not overridden) when a
+  // colour is passed, so the inline style never has to fight it.
+  const notchBgClass = notchColor ? undefined : "bg-background";
+  const notchStyle = notchColor ? { backgroundColor: notchColor } : undefined;
+  // Same split for the outline: the class stays when no colour is passed, and
+  // is dropped (not overridden) when one is.
+  const borderColorClass = borderColor ? undefined : "border-white-secondary";
+  const borderStyle = borderColor ? { borderColor } : undefined;
+  // A custom-coloured notch overhangs the 2px border by 1px each side (4px
+  // tall, like the reference's masks). Exactly border-thick, its edges stop
+  // lining up with the border's once an ancestor is scaled (e.g. the pinned
+  // Featured Works stack) and a sliver of border shows through.
+  const notchTopClass = notchColor ? "-top-0.75 h-1" : "-top-0.5 h-0.5";
+  const notchBottomClass = notchColor
+    ? "-bottom-0.75 h-1"
+    : "-bottom-0.5 h-0.5";
 
   const isLg = size === "lg";
   const labelSizeClass = isLg
@@ -43,13 +62,15 @@ export default function CustomButton(props: ICustomButton) {
       ref={containerRef}
       href={href}
       target={target}
+      style={borderStyle}
       rel={target === "_blank" ? "noreferrer" : undefined}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       onFocus={onMouseEnter}
       onBlur={onMouseLeave}
       className={cn(
-        "relative inline-flex items-center rounded-full border-2 border-white-secondary",
+        "relative inline-flex items-center rounded-full border-2",
+        borderColorClass,
         filled ? "bg-rose-light" : "bg-transparent",
         isLg
           ? `gap-[clamp(0.25rem,1.39vw,1.25rem)] py-[clamp(0.5rem,1.94vw,1.75rem)]
@@ -69,8 +90,11 @@ export default function CustomButton(props: ICustomButton) {
       <span
         ref={notch1Ref}
         aria-hidden
+        style={notchStyle}
         className={cn(
-          "absolute -top-0.5 h-0.5 rounded-full bg-background",
+          "absolute rounded-full",
+          notchTopClass,
+          notchBgClass,
           isLg
             ? "left-(--button-lg-edge-x) w-(--button-lg-notch-w)"
             : `left-5.5 w-5
@@ -82,8 +106,11 @@ export default function CustomButton(props: ICustomButton) {
       <span
         ref={notch2Ref}
         aria-hidden
+        style={notchStyle}
         className={cn(
-          "absolute -bottom-0.5 h-0.5 rounded-full bg-background",
+          "absolute rounded-full",
+          notchBottomClass,
+          notchBgClass,
           isLg
             ? "right-[clamp(2.875rem,7.64vw,6.875rem)] w-(--button-lg-notch-w)"
             : `right-5.5 w-5
@@ -95,8 +122,11 @@ export default function CustomButton(props: ICustomButton) {
       <span
         ref={notch3Ref}
         aria-hidden
+        style={notchStyle}
         className={cn(
-          "absolute -bottom-0.5 h-0.5 rounded-full bg-background",
+          "absolute rounded-full",
+          notchBottomClass,
+          notchBgClass,
           isLg
             ? "right-[clamp(1.875rem,4.86vw,4.375rem)] w-[clamp(0.75rem,2.08vw,1.875rem)]"
             : `right-14.5 w-2.5
