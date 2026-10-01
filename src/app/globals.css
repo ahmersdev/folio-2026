@@ -11,6 +11,9 @@
   --color-white: var(--white);
   --color-white-secondary: var(--white-secondary);
   --color-stroke: var(--stroke);
+  --color-mist: var(--mist);
+  --color-ash: var(--ash);
+  --color-charcoal: var(--charcoal);
   --font-sans: var(--font-dm-sans);
   --font-heading: var(--font-bebas-neue);
   --background-image-wipe: var(--gradient-wipe);
@@ -27,6 +30,10 @@
   --white: #fff;
   --white-secondary: #fdfdfd;
   --stroke: #808080;
+  --mist: #1c1c1c;
+  --ash: #393939;
+  --charcoal: #bbbbbb;
+  --gradient-ember: linear-gradient(180deg, var(--primary) 0%, #d35516 100%);
   --gradient-primary: radial-gradient(
     50% 50% at 50% 50%,
     var(--primary) 0%,
