@@ -1,33 +1,33 @@
 import { IStep } from "./steps.interface";
 
-export const STEPS_TITLE = "ASSESS, DEPLOY, AND OPERATE";
+export const STEPS_TITLE = "PLAN, ALIGN, AND SHIP";
 export const STEPS_SUBTITLE =
-  "We’re with you all the way from the pilot to beyond.";
+  "I stay with you from the first call to launch day, and the fixes that come after.";
 
 export const STEPS: IStep[] = [
   {
     count: "01",
     title: "COLLECT BRIEF",
     description:
-      "We gather all essential project information, including goals, target, features etc",
+      "We start with a call so I understand the real problem, then I write it up as a clear requirements doc.",
   },
   {
     count: "02",
-    title: "WIREFRAME",
+    title: "LOCK THE SCOPE",
     description:
-      "Low-fidelity layouts that define structure, page flow, users details before design begins",
+      "If you have Figma designs, I build from them. If not, the requirements doc guides the interface.",
   },
   {
     count: "03",
-    title: "UI DESIGN",
+    title: "BUILD IN MILESTONES",
     description:
-      "Craft visually polished interfaces that reflect the brand’s identity, ensuring clarity, consistency",
+      "I break the work into milestones with clear estimates, and you see real progress at every stage.",
   },
   {
     count: "04",
-    title: "DELIVER DESIGN",
+    title: "SHIP & SUPPORT",
     description:
-      "Finalize and package all approved design assets with organization & clear guidelines.",
+      "I handle deployment, store submission, and handover docs, then stay around for post-launch fixes.",
   },
 ];
 
