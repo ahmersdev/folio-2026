@@ -57,13 +57,21 @@ export const PROGRESS_ROW_SCRUB = 0.8;
 // for that count, so use-progress.ts scales them to our own card count.
 export const PROGRESS_REFERENCE_ITEM_COUNT = 6;
 
-// Matches the `max-width: 991px` tier in globals.css and the sticky classes
-// in index.tsx.
-export const PROGRESS_TABLET_MAX_WIDTH = 991;
+// The desktop scroll timing only applies at Tailwind's `lg` and up (the
+// pinned-box classes in index.tsx switch there too). Must equal `lg`
+// (1024px): matchMedia can't read the breakpoint from the `lg:` classes.
+export const PROGRESS_DESKTOP_QUERY = "(min-width: 1024px)";
+
+// Where the last card's right edge rests, as a share of the viewport width
+// measured in from the right. 20% matches the reference on desktop and
+// phone; the reference's own rule (endShare below) leaves a huge gap on
+// tablet and none at 1024.
+export const PROGRESS_END_INSET = 0.2;
 
 // Measured from the reference (flat 300vh track, 6 cards):
-// - endShare: the row stops once it has moved this share of its own width,
-//   so the last card rests at a fixed spot (desktop 70%, tablet/phone 84%).
+// - endShare: the row stops once it has moved this share of its own width
+//   (desktop 70%, tablet/phone 84%). Only used to size the scroll length so
+//   the pace matches; the rest position itself is PROGRESS_END_INSET.
 // - start / end: ScrollTrigger positions the scrub runs between.
 // - travelVh: scroll distance of that run, in viewport heights, for the
 //   reference's 6 cards. Our 9 cards keep the same px-per-px pace by

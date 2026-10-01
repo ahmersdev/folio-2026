@@ -1,10 +1,11 @@
 import { useRef } from "react";
 import { gsap, prefersReducedMotion, useIsomorphicLayoutEffect } from "@/lib";
 import {
+  PROGRESS_DESKTOP_QUERY,
+  PROGRESS_END_INSET,
   PROGRESS_REFERENCE_ITEM_COUNT,
   PROGRESS_ROW_SCRUB,
   PROGRESS_SCROLL,
-  PROGRESS_TABLET_MAX_WIDTH,
 } from "./progress.data";
 
 export default function useProgress() {
@@ -24,13 +25,12 @@ export default function useProgress() {
     if (!cards) return;
 
     const tierFor = () =>
-      window.innerWidth <= PROGRESS_TABLET_MAX_WIDTH
-        ? PROGRESS_SCROLL.tablet
-        : PROGRESS_SCROLL.desktop;
+      window.matchMedia(PROGRESS_DESKTOP_QUERY).matches
+        ? PROGRESS_SCROLL.desktop
+        : PROGRESS_SCROLL.tablet;
 
-    // The rest position and scroll length are tuned for the reference's 6
-    // cards; scroll length is scaled by how much farther our row travels so
-    // the px-per-px pace stays the same. offsetLeft/offsetWidth are plain
+    // The scroll length is tuned for the reference's 6 cards and scaled by
+    // how much farther our row travels, so the px-per-px pace stays the same. offsetLeft/offsetWidth are plain
     // geometry (unaffected by the GSAP transform); offsetLeft includes the
     // row's start padding.
     const measure = () => {
@@ -42,11 +42,15 @@ export default function useProgress() {
       const referenceWidth =
         PROGRESS_REFERENCE_ITEM_COUNT * itemWidth +
         (PROGRESS_REFERENCE_ITEM_COUNT - 1) * gap;
-      const restRight = referenceWidth * (1 - tier.endShare);
+      const referenceRestRight = referenceWidth * (1 - tier.endShare);
+      const restRight = window.innerWidth * (1 - PROGRESS_END_INSET);
       const start = cards.offsetLeft;
 
       const distance = Math.max(start + cards.offsetWidth - restRight, 0);
-      const referenceDistance = Math.max(start + referenceWidth - restRight, 1);
+      const referenceDistance = Math.max(
+        start + referenceWidth - referenceRestRight,
+        1,
+      );
       const travel =
         tier.travelVh * window.innerHeight * (distance / referenceDistance);
 
@@ -60,7 +64,7 @@ export default function useProgress() {
 
     // CSS `position: sticky` holds the row on screen; this tween only supplies
     // the horizontal motion. Start/end are functions so a resize across the
-    // tablet breakpoint picks up the other tier on refresh.
+    // `lg` breakpoint picks up the other tier on refresh.
     const tween = gsap.to(row, {
       x: () => -measure().distance,
       ease: "none",
